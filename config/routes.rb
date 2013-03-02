@@ -1,5 +1,8 @@
 Looper::Application.routes.draw do
 
+  resources :users
+
+
   root :to => 'dashboard#index'
   get "dashboard/index"
 
