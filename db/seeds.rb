@@ -11,7 +11,9 @@ group = Group.create( alias: 'somegroup' )
 user = group.users.create({ 
   name: 'John Doe',
   email: 'johndoe@gmail.com',
-  password: '35jkljsdf&F&(sdf' },
+  password: '35jkljsdf&F&(sdf' ,
+  thumb_url: 'http://d1w5mwt9nqclox.cloudfront.net/media/cache/user_pics/ToothlessPerson_thumbnail.jpg'
+  },
   :without_protection => true
 )
 user.save()
@@ -21,7 +23,8 @@ share = group.shares.create(
   title: 'Goats Yelling Like Humans',
   media_type: 'article',
   thumb: 'http://farm4.staticflickr.com/3010/3081514239_c6c20cb0c6.jpg',
-  description: 'has something to do with goats'
+  description: 'has something to do with goats',
+  preview_html: '<iframe width="420" height="315" src="http://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>'
 )
 
 share.save()

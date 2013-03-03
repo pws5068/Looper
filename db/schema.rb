@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303054018) do
+ActiveRecord::Schema.define(:version => 20130303054956) do
 
   create_table "group_users", :force => true do |t|
     t.integer  "group_id"
@@ -33,13 +33,14 @@ ActiveRecord::Schema.define(:version => 20130303054018) do
 
   create_table "shares", :force => true do |t|
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "group_id"
     t.string   "thumb"
     t.string   "media_type"
     t.string   "description"
     t.string   "title"
+    t.string   "preview_html"
   end
 
   create_table "tags", :force => true do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130303054018) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username"
+    t.string   "thumb_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
