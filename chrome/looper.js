@@ -3,7 +3,7 @@
     var Looper = {
         initIfNeeded: function() {
             var container = $('#LOOPER_CONTAINER');
-            
+
             if (container.length > 0) {
                 Looper.hideMainContainer();
             } else {
@@ -61,7 +61,7 @@
 
                     $('body').click(function(event) {
                         if (event.clientY > 55) {
-                            hideMainContainer();
+                            Looper.hideMainContainer();
                         }
                     });
                 }
