@@ -2,11 +2,12 @@
 		<div class="row-fluid">
 			<div class="span12 filter-nav">
 				<ul>
-					<li class="filter-nav-button article">Articles</a></li>
-					<li class="filter-nav-button video">Video</a></li>
-					<li class="filter-nav-button photo">Photos</a></li>
-					<li class="filter-nav-button audio">Music</a></li>						
+					<li ng-click="setMediaType('article')" class="filter-nav-button article">Articles</a></li>
+					<li ng-click="setMediaType('video')" class="filter-nav-button video">Video</a></li>
+					<li ng-click="setMediaType('photo')" class="filter-nav-button photo">Photos</a></li>
+					<li ng-click="setMediaType('audio')" class="filter-nav-button audio">Music</a></li>						
 				</ul>
+				<input class="filter-search" placeholder="SEARCH"></input>
 			</div>
 		</div>
 	<div class="container-fluid shares-container">

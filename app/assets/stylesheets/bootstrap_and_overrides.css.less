@@ -35,7 +35,7 @@ html, body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, p, span {
+h1, h2, h3, p, span, input {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
@@ -329,6 +329,37 @@ h3 {
 }
 .filter-nav-button.audio:hover {
   background-position: -150px -50px;
+}
+.filter-search {
+  padding: 5px 5px 5px 35px;
+  text-indent: 5px;
+  background-color: transparent;
+  border-style: none;
+  letter-spacing: 0.065em;
+  font-weight: 600;
+  background: image-url('icon_search.png') no-repeat;
+  background-position: 10px 8px;
+}
+.filter-search:focus {
+  outline: none;
+}
+.filter-search input[placeholder], [placeholder], *[placeholder] {
+  color: #f4fffb;
+}
+.filter-search::-webkit-input-placeholder { /* WebKit browsers */
+    color: #7fb7a1;
+}
+.filter-search:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #7fb7a1;
+}
+.filter-search::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #7fb7a1;
+}
+.filter-search:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #7fb7a1;
+}
+.filter-search input {
+  color: #7fb7a1;
 }
 /* End Filter Nav */
 /* Webkit */
