@@ -11,6 +11,5 @@ function GroupsController($scope, $window) {
 		} else {
 			$window.location.href = "#/shares/" + group.groupId;			
 		}
-
 	};
 }
