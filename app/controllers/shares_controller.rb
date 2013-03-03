@@ -2,7 +2,6 @@ class SharesController < ApplicationController
   # GET /shares
   # GET /shares.json
   def index
-    vid = Share.from_youtube 'Iuv__-nyO1M'
     @shares = Share.all
 
     respond_to do |format|
