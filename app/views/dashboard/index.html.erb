@@ -1,11 +1,11 @@
 <div class="row-fluid">
 	<div class="span4" ng-controller="GroupsController">
 		<ul id="groups">
-			<li>
-				<a href="#/shares">All</a>
+			<li ng-click="selectGroup()">
+				All
 			</li>		
-			<li ng-repeat="group in groups">
-				<a href="#/shares/{{group.groupId}}">{{group.title}}</a>
+			<li ng-repeat="group in groups" ng-click="selectGroup(group)">
+				{{group.title}}
 			</li>
 		</ul>
 	</div>

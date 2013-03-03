@@ -19,7 +19,7 @@ function DashboardController($scope, $routeParams) {
 	
 	var shares = [];
 	for (var i in allShares) {
-		var share = allShares[i];
+		var share = allShares[i];	
 		if (share.shareWith == $scope.groupId || $scope.groupId == null) {
 			shares.push(share);
 		}
