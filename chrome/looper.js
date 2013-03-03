@@ -2,9 +2,9 @@
  * Create the stylesheet
  */
 
-var css = document.createElement("link")
-css.setAttribute("rel", "stylesheet")
-css.setAttribute("type", "text/css")
+var css = document.createElement("link");
+css.setAttribute("rel", "stylesheet");
+css.setAttribute("type", "text/css");
 css.setAttribute("href", chrome.extension.getURL('looper.css'));
 
 document.getElementsByTagName('body')[0].appendChild(css);
