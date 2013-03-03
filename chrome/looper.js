@@ -1,13 +1,17 @@
 (function(window, document, undefined)  {
 
-    var Looper = {
+    var Looper = function () {
+
+    };
+
+    Looper.prototype = {
         initIfNeeded: function() {
             var container = $('#LOOPER_CONTAINER');
 
             if (container.length > 0) {
-                Looper.hideMainContainer();
+                this.hideMainContainer();
             } else {
-                Looper.init();
+                this.init();
             }
         },
 
@@ -31,6 +35,8 @@
             /*
              * Read in the main html
              */
+
+            var self = this;
 
             var xhr = new XMLHttpRequest();
             xhr.open("GET", chrome.extension.getURL('looper.html'), true);
@@ -61,7 +67,7 @@
 
                     $('body').click(function(event) {
                         if (event.clientY > 55) {
-                            Looper.hideMainContainer();
+                            self.hideMainContainer();
                         }
                     });
                 }
@@ -89,6 +95,7 @@
      * Kick things off
      */
 
-    Looper.initIfNeeded();
+    var looper = new Looper();
+    looper.initIfNeeded();
 
 })(window, document);
