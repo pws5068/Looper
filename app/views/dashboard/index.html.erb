@@ -1,6 +1,9 @@
 <div class="row-fluid">
 	<div class="span4" ng-controller="GroupsController">
 		<ul id="groups">
+			<li>
+				<a href="#/shares">All</a>
+			</li>		
 			<li ng-repeat="group in groups">
 				<a href="#/shares/{{group.groupId}}">{{group.title}}</a>
 			</li>
