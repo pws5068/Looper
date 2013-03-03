@@ -1,8 +1,27 @@
 #LOOPER_MAIN {
     background: #57B18E;
     height: 50px;
-    position:fixed !important;
-    top: 0 !important;
+    position: fixed;
+    top: 0px;
     width: 100%;
     z-index: 99999999999;
+}
+
+#LOOPER_NAMES {
+    background: none;
+    border: 0;
+    color: #90E1C1;
+    font: 18px Arial;
+    height: 30px;
+    padding: 0;
+    margin: 10px;
+    width: 90%;
+}
+
+#LOOPER_NAMES:focus {
+    outline: none;
+}
+
+#LOOPER_NAMES::-webkit-input-placeholder {
+    color: #90E1C1;
 }

@@ -18,6 +18,13 @@ xhr.open("GET", chrome.extension.getURL('looper.html'), true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         document.body.innerHTML += xhr.response;
+
+        $('#LOOPER_MAIN').css('top', '-1' + $('#LOOPER_MAIN').css('height'))
+        .animate({
+            top: '0px'
+        }, {
+            duration:500
+        });
     }
 };
 xhr.send();
