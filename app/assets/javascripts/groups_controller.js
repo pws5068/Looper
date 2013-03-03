@@ -1,15 +1,16 @@
-function GroupsController($scope, $window) {
+function GroupsController($scope, $window, $http) {
 	// To do load in groups
-	$scope.groups = [
-		{title:"Paul, Matt, Rick, and Zain", prettyDate:"yesterday", groupId:"100"},
-		{title:"Family", prettyDate:"1 week ago", groupId:"200"}
-	];
+	
+	$http.get('/groups').success(function(data) {
+		$scope.groups = data;
+		console.log(data);
+	});
 	
 	$scope.selectGroup = function(group) {
 		if (group == null) {
 			$window.location.href = "#/shares";			
 		} else {
-			$window.location.href = "#/shares/" + group.groupId;			
+			$window.location.href = "#/shares/" + group.id;			
 		}
 	};
 }
