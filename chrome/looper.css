@@ -1,0 +1,8 @@
+#LOOPER_MAIN {
+    background: #54AF8F;
+    height: 200px;
+    position:fixed !important;
+    top: 0 !important;
+    width: 100%;
+    z-index: 99999999999;
+}
