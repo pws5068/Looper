@@ -9,7 +9,7 @@
 group = Group.create( alias: 'somegroup' )
 
 user = group.users.create({ 
-  name: 'John Doe', 
+  name: 'John Doe',
   email: 'johndoe@gmail.com',
   password: '35jkljsdf&F&(sdf' },
   :without_protection => true
@@ -18,7 +18,12 @@ user.save()
 
 share = group.shares.create( 
   url: 'http://www.youtube.com/watch?v=PpccpglnNf0', 
-  thumb: 'http://farm4.staticflickr.com/3010/3081514239_c6c20cb0c6.jpg'
+  title: 'Goats Yelling Like Humans',
+  type: 'article',
+  thumb: 'http://farm4.staticflickr.com/3010/3081514239_c6c20cb0c6.jpg',
+  description: 'has something to do with goats'
 )
+
+share.save()
 
 tag = share.tags.create( keyword: 'goat' )
