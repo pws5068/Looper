@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenSans-Semibold.ttf');
+}
+
 #LOOPER_MAIN {
     background: #57B18E;
     height: 50px;
@@ -17,10 +22,10 @@
     border: 0;
     color: #FFFFFF;
     float: left;
-    font: 18px Arial;
-    height: 30px;
+    font: 20px 'Open Sans', Arial, sans-serif;
+    height: 48px;
     padding: 0;
-    margin: 10px 0px 10px 30px;
+    margin: 0 0 0 30px;
     width: 85%;
 }
 

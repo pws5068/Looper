@@ -22,6 +22,7 @@
     "web_accessible_resources": [
         "looper.html",
         "looper.css",
-        "images/looper_logo.png"
+        "images/looper_logo.png",
+        "fonts/OpenSans-Semibold.ttf"
     ]
 }
