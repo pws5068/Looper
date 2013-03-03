@@ -21,6 +21,7 @@
 
     "web_accessible_resources": [
         "looper.html",
-        "looper.css"
+        "looper.css",
+        "images/looper_logo.png"
     ]
 }

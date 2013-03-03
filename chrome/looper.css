@@ -7,15 +7,21 @@
     z-index: 99999999999;
 }
 
+#LOOPER_LOGO {
+    float: left;
+    padding: 10px 0px 10px 30px;
+}
+
 #LOOPER_NAMES {
     background: none;
     border: 0;
-    color: #90E1C1;
+    color: #FFFFFF;
+    float: left;
     font: 18px Arial;
     height: 30px;
     padding: 0;
-    margin: 10px;
-    width: 90%;
+    margin: 10px 0px 10px 30px;
+    width: 85%;
 }
 
 #LOOPER_NAMES:focus {
@@ -23,5 +29,5 @@
 }
 
 #LOOPER_NAMES::-webkit-input-placeholder {
-    color: #90E1C1;
+    color: #429977;
 }

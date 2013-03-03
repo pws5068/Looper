@@ -19,6 +19,8 @@ xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
         document.body.innerHTML += xhr.response;
 
+        $('#LOOPER_LOGO').attr('src', chrome.extension.getURL('images/looper_logo.png'));
+
         $('#LOOPER_MAIN').css('top', '-1' + $('#LOOPER_MAIN').css('height'))
         .animate({
             top: '0px'
