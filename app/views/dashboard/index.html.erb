@@ -7,7 +7,7 @@
 			<!--<li ng-click="selectGroup()">
 				All
 			</li>-->		
-			<li ng-repeat="group in groups" ng-click="selectGroup(group)">
+			<li ng-repeat="group in groups" ng-click="selectGroup(group)" ng-class="{active : isSelectedGroup(group)}">
 				<div>
 					<span class="group-time-icon"></span> <span class="group-time">{{group.updated_at}}</span>
 				</div>

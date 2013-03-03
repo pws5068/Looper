@@ -19,7 +19,14 @@ function GroupsController($scope, $window, $http) {
 		console.log(data);
 	});
 	
-	$scope.selectGroup = function(group) {
+	$scope.isSelectedGroup = function(group) {
+		return group == $scope.selectedGroup;
+	}
+	
+	$scope.selectGroup = function(group, $event) {
+		//ng-class="{active : isSelected(section)}"
+		$scope.selectedGroup = group;
+		console.log($event);
 		if (group == null) {
 			$window.location.href = "#/shares";			
 		} else {
