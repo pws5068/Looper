@@ -1,0 +1,7 @@
+angular.module('looper', []).
+  config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+      when('/shares', {templateUrl: '<%= asset_path 'shares.html' %>', controller: DashboardController}).  
+      when('/shares/:groupId', {templateUrl: '<%= asset_path 'shares.html' %>', controller: DashboardController}).
+      otherwise({redirectTo: '/shares'});
+}]);
