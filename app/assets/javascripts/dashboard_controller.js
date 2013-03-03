@@ -44,6 +44,13 @@ function DashboardController($scope, $routeParams, $http) {
 	};
 	
 	/*
+		Sets the search query for controller
+	*/
+	$scope.setSearchQuery = function(query) {
+		$scope.searchQuery = query;
+		$scope.filterAllShares();
+	};
+	/*
 		All visible shares will be filtered right here
 	*/
 	$scope.filterAllShares = function() {
@@ -57,6 +64,12 @@ function DashboardController($scope, $routeParams, $http) {
 			} else {
 				filteredShares.push(share);
 			}
+		}
+		
+		if ($scope.searchQuery != null) {
+			filteredShares = filteredShares.filter(function(share) {
+				return share.title.indexOf($scope.searchQuery) !== -1 || share.title.indexOf($scope.searchQuery) !== -1;
+			});
 		}
 		
 		$scope.shares = filteredShares;
