@@ -1,11 +1,19 @@
-<div class="row-fluid">
+<div class="row-fluid group-wrap">
 	<div class="span4 groups-container" ng-controller="GroupsController">
+		<div class="groups-header">
+			<h3 class="groups-header-label">Groups</h3>
+		</div>
 		<ul id="groups">
-			<li ng-click="selectGroup()">
+			<!--<li ng-click="selectGroup()">
 				All
-			</li>		
+			</li>-->		
 			<li ng-repeat="group in groups" ng-click="selectGroup(group)">
-				{{group.alias}}
+				<div>
+					<span class="group-time-icon"></span> <span class="group-time">{{group.updated_at}}</span>
+				</div>
+				<div>
+					<span class="group-alias">{{group.alias}}</span>
+				</div>
 			</li>
 		</ul>
 	</div>

@@ -32,7 +32,25 @@
 // @linkColor: #ff0000;
 html, body {
   height: 100%;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
+
+h1, h2, h3, p, span {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 20px;	
+}
+
+h2 {
+	font-size: 18px;
+}
+
+h3 {
+	font-size: 14px;
+}
+
 #wrap {
   min-height: 100%;
 }
@@ -160,8 +178,47 @@ html, body {
 
 /* Groups */
 
-.groups-container, .container-fluid {
+.groups-header {
+	color: #80B7A1;
+	text-transform: uppercase;
+	height:50px;
+	background-color: #9ad9c0;	
+}
+
+.groups-header-label {
+	margin:0;
+	padding:5px 0 0 28px;
+}
+
+.groups-container {
 	padding-left:0;
+	height: 100%;
+	background-color: #e0e0e0;
+}
+
+.group-wrap {
+	height:900px;	
+}
+
+.group-time-icon {
+	display: block;
+	width:14px;
+	height: 14px;
+	padding-right:5px;
+	margin-top:3px;
+	float: left;
+	background:image-url('icon_time.png') no-repeat;
+}
+
+.group-time {
+	font-size: 11px;
+	color: #aaaaaa;
+}
+
+.group-alias {
+	font-size: 14px;
+	font-weight: 600;
+	color: #999999;	
 }
 
 #groups {
@@ -172,13 +229,19 @@ html, body {
 
 #groups li {
 	padding-left: 10px;
-	height:44px;
-	background-color: #efeded;
+	height:58px;
+	background-color: #e0e0e0;
 	vertical-align: text-top;
-	border-bottom: 1px solid #949494
+	border-bottom: 1px solid #d4d4d4;
+	padding-top:17px;
+	padding-left:28px;
+}
+
+#groups li:active {
+	background-color: #d9d9d9;
 }
 
 #groups li:hover {
-	background-color: #b0b0b0;
+	background-color: #d9d9d9;
 }
-/* End Groups */
+/* End Groups */	
