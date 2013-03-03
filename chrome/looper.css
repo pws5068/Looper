@@ -22,8 +22,9 @@
     border: 0;
     color: #FFFFFF;
     float: left;
-    font: 20px 'Open Sans', Arial, sans-serif;
+    font: 18px 'Open Sans', Arial, sans-serif;
     height: 48px;
+    letter-spacing: 0.06em;
     padding: 0;
     margin: 0 0 0 30px;
     width: 85%;
@@ -35,4 +36,36 @@
 
 #LOOPER_NAMES::-webkit-input-placeholder {
     color: #429977;
+}
+
+/* AUTO COMPLETE */
+
+.ui-autocomplete {
+    position: fixed;
+    left: 0 !important;
+    top: 50px !important;
+    width: 100% !important;
+    z-index: 99999999998;
+}
+
+.ui-menu-item {
+    display: block;
+    height: 40px;
+}
+
+.ui-menu-item a {
+    background: rgba(86, 158, 131, 0.9);
+    color: #dbd2d3;
+    display: block;
+    font: 16px 'Open Sans', Arial, sans-serif;
+    height: 30px;
+    padding: 10px 0 0 91px;
+}
+
+.ui-menu-item a.ui-state-focus {
+    background: rgba(81, 143, 120, 0.9);
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
 }
