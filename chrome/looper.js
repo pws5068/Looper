@@ -83,6 +83,7 @@
                 type: 'GET'
             }).done(function(data) {
                 var groups = [];
+                var groupUserNames = [];
 
                 data.forEach(function(group, index) {
                     var object = {
@@ -97,12 +98,14 @@
                     object.users = object.users.substring(0, object.users.length - 2);
 
                     groups.push(object);
+                    groupUserNames.push(object.users);
                 });
 
                 this.groups = groups;
+                this.groupUserNames = groupUserNames;
 
                 $('#LOOPER_NAMES').autocomplete({
-                    source: ["paul rick zain", "paul rick", "paul", "matt zain"]
+                    source: groupUserNames
                 });
             });
         },
