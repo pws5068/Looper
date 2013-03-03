@@ -24,7 +24,15 @@ var xhr = new XMLHttpRequest();
 xhr.open("GET", chrome.extension.getURL('looper.html'), true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
+        /*
+         * Put the main contents of the html file into the container
+         */
+
         container.innerHTML += xhr.response;
+
+        /*
+         * Load the logo and animate the main section down
+         */
 
         $('#LOOPER_LOGO').attr('src', chrome.extension.getURL('images/looper_logo.png'));
 
@@ -32,8 +40,33 @@ xhr.onreadystatechange = function() {
         .animate({
             top: '0px'
         }, {
-            duration:500
+            duration: 500
+        });
+
+        /*
+         * Add the click listener to close the main section when needed
+         */
+
+        $('body').click(function(event) {
+            if (event.clientY > 55) {
+                hideMainContainer();
+            }
         });
     }
 };
 xhr.send();
+
+/*
+ * Animates the main section off the screen and then removes everything from the DOM
+ */
+
+function hideMainContainer() {
+    $('#LOOPER_MAIN').animate({
+        top: '-1' + $('#LOOPER_MAIN').css('height')
+    }, {
+        duration: 400,
+        complete: function() {
+            $('#LOOPER_CONTAINER').remove();
+        }
+    });
+}
