@@ -1,5 +1,8 @@
 Looper::Application.routes.draw do
 
+  resources :shares
+
+
   resources :tags
 
 

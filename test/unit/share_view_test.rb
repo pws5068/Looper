@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ContentViewTest < ActiveSupport::TestCase
+class ShareViewTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
