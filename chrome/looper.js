@@ -70,10 +70,42 @@
                             self.hideMainContainer();
                         }
                     });
+
+                    self.loadGroupsData();
                 }
             };
             xhr.send();
-        }, 
+        },
+
+        loadGroupsData: function() {
+            $.ajax({
+                url: 'http://fathomless-lake-4709.herokuapp.com/groups.json',
+                type: 'GET'
+            }).done(function(data) {
+                var groups = [];
+
+                data.forEach(function(group, index) {
+                    var object = {
+                        id: group.id,
+                        users: ''
+                    };
+
+                    group.users.forEach(function(person, index) {
+                        object.users += person.name + ', ';
+                    });
+
+                    object.users = object.users.substring(0, object.users.length - 2);
+
+                    groups.push(object);
+                });
+
+                this.groups = groups;
+
+                $('#LOOPER_NAMES').autocomplete({
+                    source: ["paul rick zain", "paul rick", "paul", "matt zain"]
+                });
+            });
+        },
 
         /*
          * Animates the main section off the screen and then removes everything from the DOM
