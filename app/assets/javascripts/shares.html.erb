@@ -1,10 +1,14 @@
 <div ng-controller="DashboardController">
-	<ul>
-		<li>Articles</li>
-		<li>Video</li>
-		<li>Photos</li>
-		<li>Music</li>						
-	</ul>
+	<div class="row-fluid">
+		<div class="span12 filter-nav">
+			<ul class="filter-nav-buttons">
+				<li>Articles</li>
+				<li>Video</li>
+				<li>Photos</li>
+				<li>Music</li>						
+			</ul>
+		</div>
+	</div>
 	<div ng-repeat="share in shares" class="row-fluid share" ng-click="selectShare(share)">
 		<div class="span2">
 			<img src="{{share.thumb}}" width="200" height="150" />
@@ -18,6 +22,9 @@
 				<span ng-repeat="user in share.group.users">
 					<img src="{{user.thumb_url}}" alt="{{user.name}}" />
 				</span>
+				<div>
+					<span class="group-time-icon"></span> <span class="group-time ng-binding">2013-03-03T08:27:10Z</span>
+				</div>
 			</div>			
 		</div>
 	</div>
