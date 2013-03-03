@@ -1,0 +1,10 @@
+<div class="span8" ng-controller="DashboardController">
+	<div ng-repeat="share in shares" class="row-fluid">
+		<div class="span1">
+			<img src="{{share.thumb}}" />
+		</div>
+		<div class="span11">
+			<a href="{{share.url}}" target="_blank">{{share.title}}</a>
+		</div>			
+	</div>
+</div>
