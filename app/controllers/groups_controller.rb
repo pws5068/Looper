@@ -2,7 +2,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = current_user.groups
+    #@groups = current_user.groups # @todo -- use this instead of all()
+    @groups = Group.all()
 
     respond_to do |format|
       format.html # index.html.erb
