@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /users
   # GET /users.json
   def index
@@ -7,6 +10,18 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
+    end
+  end
+
+  def friends
+    friends = current_user.friends()
+    fb_friends = current_user.fb_friends()
+
+    respond_to do |format|
+      format.json { render json: {
+          :friends => friends,
+          :network_friends => fb_friends
+        }}
     end
   end
 
