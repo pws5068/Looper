@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+
+    "name": "looper.io",
+    "description": "Loop it up",
+    "version": "1.0",
+
+    "permissions": [
+        "tabs",
+        "http://*/"
+    ],
+
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
+
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
+
+    "content_scripts": [{
+        "matches": ["http://*/"],
+        "js": ["looper.js"]
+    }]
+}
