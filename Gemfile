@@ -23,6 +23,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'debugger'
 
 # To use ActiveModel has_secure_password

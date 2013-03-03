@@ -1,20 +1,15 @@
 Looper::Application.routes.draw do
 
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+
   resources :shares
-
-
   resources :tags
-
-
-  devise_for :users
-
   resources :groups
   resources :contents
   resources :users
 
-
   root :to => 'dashboard#index'
-  get "dashboard/index"
+  get 'dashboard/index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
