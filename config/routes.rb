@@ -4,9 +4,14 @@ Looper::Application.routes.draw do
 
   resources :shares
   resources :tags
-  resources :groups
   resources :contents
   resources :users
+
+  resources :groups do
+    member do
+      get 'shares'
+    end
+  end
 
   root :to => 'dashboard#index'
   get 'dashboard/index'

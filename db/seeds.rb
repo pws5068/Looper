@@ -6,9 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-group = Group.create( alias: 'somegroup' )
-
-user = group.users.create({ 
+user = User.create({ 
   name: 'John Doe',
   email: 'johndoe@gmail.com',
   password: '35jkljsdf&F&(sdf' ,
@@ -16,7 +14,20 @@ user = group.users.create({
   },
   :without_protection => true
 )
-user.save()
+
+group = user.groups.create({
+  alias: 'testgroup'
+  },
+  :without_protection => true
+)
+group.save()
+
+group2 = user.groups.create({
+  alias: 'mysecondgroup'
+  },
+  :without_protection => true
+)
+group2.save()
 
 share = group.shares.create( 
   url: 'http://www.youtube.com/watch?v=PpccpglnNf0', 

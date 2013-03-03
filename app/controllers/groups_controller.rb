@@ -2,11 +2,21 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    #@groups = current_user.groups # @todo -- use this instead of all()
+    @groups = Group.all()
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups.to_json(:include => :users) }
+    end
+  end
+
+  def shares
+    group = Group.find(params[:id])
+    @shares = group.shares ? group.shares : []
+
+    respond_to do |format|
+      format.json { render json: @shares }
     end
   end
 

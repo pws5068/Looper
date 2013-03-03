@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.username = auth.info.nickname
       user.email = auth.info.email
+      user.icon_url = "http://graph.facebook.com/#{auth.uid}/picture"
       user.thumb_url = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
