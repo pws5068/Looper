@@ -27,7 +27,7 @@
     <link rel="image_src" href="<%= asset_path 'img_facebook_thumb.png' %>">
   </head>
   <body>
-
+  <div id="wrap">
     <div class="navbar navbar-fluid-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -51,13 +51,13 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div id="main" class="container-fluid">
         <div class="span9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
-
+  </div>
   <footer id="footer" class="looper-footer">
     <div class="container-fluid" id="contact">
       <div class="row-fluid">
@@ -68,10 +68,8 @@
             <ul>
               <li><h5>Looper</h5>
               <li>320 Chestnut</li>
-              <li>San Francisco, CA 94102</li>
-              <li><abbr title="Phone">P:</abbr> (415) 283-4848</li>
-               
-              <li><a href="mailto:#">info@looper.com</a></li>
+              <li>San Francisco, CA 94102</li>               
+              <li><a href="mailto:#">whatup@looper.io</a></li>
             </ul>
           </div>
           <div class="span2">
@@ -94,9 +92,6 @@
       </div>
     </div>
   </footer>
-
-    </div> <!-- /container -->
-
 
 
   </body>

@@ -30,6 +30,23 @@
 //
 // Example:
 // @linkColor: #ff0000;
+html, body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+}
+#main {
+  overflow: auto;
+  padding-bottom: -150px;
+}
+#footer {
+   margin-right: -20px;
+   margin-left: -20px;
+   padding-right: 0;
+   padding-left: 60px;
+}
+
 .looper-footer {
 	text-align: left;
 	padding: 30px 0;
@@ -37,7 +54,8 @@
 	border-top: 1px solid #e5e5e5;
 	width: 100%;
 	background-color: #e4e4e4;
-	height: 200px;
+	height: auto;
+  position: relative;
 }
 .looper-footer li {
 	display: list-item;
@@ -112,9 +130,6 @@
   padding: 20px;
   margin-top: 30px;
 }
-#footer {
-  margin:0;
-  width:100%;
-}
+
 
 /* End Footer */
