@@ -76,10 +76,17 @@ h3 {
 }
 
 .share {
-	height:150px;
+	height:151px;
+  overflow: hidden;
 	border-bottom:1px solid #D4D4D4;
 }
-
+.share h3, p{
+  margin:0;
+  padding:0;
+}
+.shares-container {
+  padding-left: 0;
+}
 .span8 {
 	margin-left:0 !important;
 }
@@ -214,12 +221,13 @@ h3 {
 .group-time {
 	font-size: 11px;
 	color: #aaaaaa;
+  letting-spacing: .04em;
 }
 
 .group-alias {
 	font-size: 14px;
-	font-weight: 600;
-	letter-spacing: .065em;
+	font-weight: 100;
+	letter-spacing: .01em;
 	color: #aaaaaa;	
 }
 
@@ -231,13 +239,10 @@ h3 {
 
 #groups li {
 	cursor: pointer;
-	padding-left: 10px;
-	height:57px;
+	height:75px;
 	background-color: #e0e0e0;
 	vertical-align: text-top;
 	border-bottom: 1px solid #d4d4d4;
-	padding-top:17px;
-	padding-left:28px;
 }
 
 #groups li.active, #groups li.active:hover {
@@ -246,6 +251,10 @@ h3 {
 
 #groups li:hover {
 	background-color: #dddddd;
+}
+.group-content {
+  width: auto;
+  padding: 19px 0 0 28px;
 }
 /* End Groups */	
 
@@ -256,7 +265,8 @@ h3 {
   width: 100%;
 }
 .filter-nav ul {
-  width:200px;
+  margin-left: 0;
+  list-style-type: none;
 }
 .filter-nav-buttons {
   list-style-type: none;
@@ -268,6 +278,66 @@ h3 {
   float: left;
   border-left: 1px solid #7fb7a1;
   list-style-type: none;
+  display: block;
+  float: left;
+
+}
+.filter-nav-buttons li:hover {
+  background-color: #7fb7a1;
+}
+.filter-nav-article {
+  background: image-url('/assets/nav_article_icon.png') no-repeat 0 0;
+  background-position: 16px 18px;
+  height: 14px;
+  width: 18px;
+  display:block;
+}
+.filter-nav-article li:hover {
+  background: image-url('/assets/nav_article_icon.png') no-repeat 0 14px;
+
 }
 
+.filter-nav-button {
+  background: image-url('nav_sprite.jpg') no-repeat;
+  float: left;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  text-indent: -9999px;
+}
+.filter-nav-button.article {
+  background-position: 0 0;
+}
+.filter-nav-button.article:hover {
+  background-position: 0 -50px;
+}
+.filter-nav-button.video {
+  background-position: -50px 0;
+}
+.filter-nav-button.video:hover {
+  background-position: -50px -50px;
+}
+.filter-nav-button.photo {
+  background-position: -100px 0;
+}
+.filter-nav-button.photo:hover {
+  background-position: -100px -50px;
+}
+.filter-nav-button.audio {
+  background-position: -150px 0;
+}
+.filter-nav-button.audio:hover {
+  background-position: -150px -50px;
+}
 /* End Filter Nav */
+/* Webkit */
+::selection {
+    background: #b4dacb;
+    color: #FFF;
+}
+/* Gecko/Mozilla */
+::-moz-selection {
+    background: #b4dacb;
+    color: #FFF;
+}

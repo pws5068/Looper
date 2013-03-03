@@ -1,31 +1,32 @@
 <div ng-controller="DashboardController">
-	<div class="row-fluid">
-		<div class="span12 filter-nav">
-			<ul class="filter-nav-buttons">
-				<li>Articles</li>
-				<li>Video</li>
-				<li>Photos</li>
-				<li>Music</li>						
-			</ul>
+		<div class="row-fluid">
+			<div class="span12 filter-nav">
+				<ul>
+					<li class="filter-nav-button article">Articles</a></li>
+					<li class="filter-nav-button video">Video</a></li>
+					<li class="filter-nav-button photo">Photos</a></li>
+					<li class="filter-nav-button audio">Music</a></li>						
+				</ul>
+			</div>
 		</div>
-	</div>
-	<div ng-repeat="share in shares" class="row-fluid share" ng-click="selectShare(share)">
-		<div class="span2">
-			<img src="{{share.thumb}}" width="200" height="150" />
-		</div>
-		<div class="span10">
-			<div class="span1"></div>
-			<div class="span11">
-				<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
-				<p>{{share.description}}</p>
-				<p>{{share.prettyDate}}</p>
-				<span ng-repeat="user in share.group.users">
-					<img src="{{user.thumb_url}}" alt="{{user.name}}" />
-				</span>
-				<div>
-					<span class="group-time-icon"></span> <span class="group-time ng-binding">2013-03-03T08:27:10Z</span>
+	<div class="container-fluid shares-container">
+		<div class="span12">
+			<div ng-repeat="share in shares" class="row-fluid share" ng-click="selectShare(share)">
+				<div class="span2">
+					<img src="{{share.thumb}}" width="200" height="150" />
 				</div>
-			</div>			
+				<div class="span10">
+					<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
+					<p>{{share.description}}</p>
+					<p>{{share.prettyDate}}</p>
+					<span ng-repeat="user in share.group.users">
+						<img src="{{user.thumb_url}}" alt="{{user.name}}" />
+					</span>
+					<div>
+						<span class="group-time-icon"></span> <span class="group-time ng-binding">2013-03-03T08:27:10Z</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
