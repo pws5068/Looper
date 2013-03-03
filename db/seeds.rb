@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+users = User.create([
+  {
+      name: 'John Facebook',
+      email: 'john_fb@gmail.com'
+  }
+])
+
+group = Group.create( alias: 'somegroup' )
+
+share = group.shares.create( url: 'http://www.youtube.com/watch?v=PpccpglnNf0' )
+tag = share.tags.create( keyword: 'goat' )
