@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'koala'
+gem 'youtube_it'
 gem 'debugger'
 
 # Gems used only for assets and not required

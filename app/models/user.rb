@@ -14,6 +14,18 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :thumb_url
 
+
+  def friends
+    graph = facebook()
+    if graph
+      graph.get_connection('me','friends')
+    end
+  end
+
+  def fb_connected?
+    oauth_token.present?
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
