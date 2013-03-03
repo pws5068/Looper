@@ -3,6 +3,14 @@ function DashboardController($scope, $routeParams, $http) {
 	
 	// TODO: Show loader if local data is empty
 	$http.get('/shares').success(function(data) {
+		var shares = data;
+		for (var i = 0; i < data.length; i++) {
+			var share = shares[i];
+			var groupId = share.group_id;
+			var group = Group.getGroupById(groupId);
+			share.group = group;
+		}
+		
 		$scope.shares = data;
 	});
 	
@@ -10,3 +18,5 @@ function DashboardController($scope, $routeParams, $http) {
 		// TODO: Expand the share
 	}
 }
+
+DashboardController.$inject = ['$scope', '$routeParams', '$http'];

@@ -6,6 +6,9 @@
 		<div class="span11">
 			<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
 			<p>{{share.description}}</p>
+			<span ng-repeat="user in share.group.users">
+				{{user.name}},
+			</span>
 		</div>			
 	</div>
 </div>
