@@ -1,10 +1,11 @@
-<div class="span8" ng-controller="DashboardController">
-	<div ng-repeat="share in shares" class="row-fluid" ng-click="selectShare(share)">
+<div ng-controller="DashboardController">
+	<div ng-repeat="share in shares" class="row-fluid share" ng-click="selectShare(share)">
 		<div class="span1">
 			<img src="{{share.thumb}}" width="200" height="150" />
 		</div>
 		<div class="span11">
-			<a href="{{share.url}}" target="_blank">{{share.title}}</a>
+			<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
+			<p>{{share.description}}</p>
 		</div>			
 	</div>
 </div>
