@@ -1,3 +1,10 @@
+$('#LOOPER_CONTAINER').remove();
+
+var container = document.createElement('div');
+container.setAttribute('id', 'LOOPER_CONTAINER');
+
+document.getElementsByTagName('body')[0].appendChild(container);
+
 /*
  * Create the stylesheet
  */
@@ -7,7 +14,7 @@ css.setAttribute("rel", "stylesheet");
 css.setAttribute("type", "text/css");
 css.setAttribute("href", chrome.extension.getURL('looper.css'));
 
-document.getElementsByTagName('body')[0].appendChild(css);
+container.appendChild(css);
 
 /*
  * Read in the main html
@@ -17,7 +24,7 @@ var xhr = new XMLHttpRequest();
 xhr.open("GET", chrome.extension.getURL('looper.html'), true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
-        document.body.innerHTML += xhr.response;
+        container.innerHTML += xhr.response;
 
         $('#LOOPER_LOGO').attr('src', chrome.extension.getURL('images/looper_logo.png'));
 
