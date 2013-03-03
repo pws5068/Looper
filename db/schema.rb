@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303052115) do
+ActiveRecord::Schema.define(:version => 20130303054018) do
 
   create_table "group_users", :force => true do |t|
     t.integer  "group_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20130303052115) do
     t.datetime "updated_at",  :null => false
     t.string   "group_id"
     t.string   "thumb"
-    t.string   "type"
+    t.string   "media_type"
     t.string   "description"
     t.string   "title"
   end

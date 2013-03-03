@@ -19,7 +19,7 @@ user.save()
 share = group.shares.create( 
   url: 'http://www.youtube.com/watch?v=PpccpglnNf0', 
   title: 'Goats Yelling Like Humans',
-  type: 'article',
+  media_type: 'article',
   thumb: 'http://farm4.staticflickr.com/3010/3081514239_c6c20cb0c6.jpg',
   description: 'has something to do with goats'
 )
