@@ -30,3 +30,4 @@ share = group.shares.create(
 share.save()
 
 tag = share.tags.create( keyword: 'goat' )
+tag.save()
