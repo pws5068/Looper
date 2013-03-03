@@ -15,5 +15,9 @@ users = User.create([
 
 group = Group.create( alias: 'somegroup' )
 
-share = group.shares.create( url: 'http://www.youtube.com/watch?v=PpccpglnNf0' )
+share = group.shares.create( 
+  url: 'http://www.youtube.com/watch?v=PpccpglnNf0', 
+  thumb: 'http://farm4.staticflickr.com/3010/3081514239_c6c20cb0c6.jpg'
+)
+
 tag = share.tags.create( keyword: 'goat' )
