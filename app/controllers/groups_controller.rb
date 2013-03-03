@@ -11,6 +11,15 @@ class GroupsController < ApplicationController
     end
   end
 
+  def shares
+    group = Group.find(params[:id])
+    @shares = group.shares ? group.shares : []
+
+    respond_to do |format|
+      format.json { render json: @shares }
+    end
+  end
+
   # GET /groups/1
   # GET /groups/1.json
   def show
