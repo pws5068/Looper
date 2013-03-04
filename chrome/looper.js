@@ -104,7 +104,7 @@
             var self = this;
 
             $.ajax({
-                url: 'http://looper-io.herokuapp.com/users/friends.json',//http://fathomless-lake-4709.herokuapp.com/groups.json',
+                url: 'http://looper.io/users/friends.json',//http://fathomless-lake-4709.herokuapp.com/groups.json',
                 type: 'GET'
             }).done(function(data) {
                 var groups = [];
@@ -308,6 +308,23 @@
                         }
                     }
                 });
+            });
+
+            /*$.ajax({
+                url: 'http://looper.io/groups.json',
+                type: 'POST',
+                data: 'friends=[' + idUsers.join() + ']&network_friends=[' + graphIdUsers.join() + ']'
+            }).done(function(data) {
+                console.log(data);
+            });*/
+
+            var groups = {friends:idUsers, network_friends:graphIdUsers};
+            $.post('/groups.json', groups, function(inData){
+                var data = {share:{url:location.href, group_id:inData.id}};                               
+                $.post('/shares.json', data, function(inData2) {
+                    //console.log(inData);
+                    /*$window.location.href = "#/shares"*/
+                });                         
             });
 
             /*
