@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :thumb_url, :icon_url
 
-
   def fb_friends
     graph = facebook()
     if graph
