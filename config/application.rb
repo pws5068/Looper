@@ -45,9 +45,6 @@ module Looper
     # for heroku (as suggested by devise docs)
     config.assets.initialize_on_precompile = false
 
-    # Security be damned! we have a chrome extension
-    self.allow_forgery_protection = false
-
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
