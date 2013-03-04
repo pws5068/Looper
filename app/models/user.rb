@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :group_users
   has_many :groups, :through => :group_users
+  has_many :accessible_shares, :through => :groups, :source => :shares
   has_many :contents, :through => :share_views
 
   # Include default devise modules. Others available are:
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_from_facebook( data )
     graph_id = data['id']
     name = data['name']
-    
+
     user = User.where("uid=#{graph_id}").first()
     user = User.create( :uid => graph_id, :name => name ) unless user
     user
