@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304134547) do
+ActiveRecord::Schema.define(:version => 20130304135307) do
 
   create_table "group_users", :force => true do |t|
     t.integer  "group_id"
@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(:version => 20130304134547) do
 
   create_table "shares", :force => true do |t|
     t.string   "url"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "group_id"
     t.string   "thumb"
     t.string   "media_type"
-    t.text     "description",  :limit => 255
     t.string   "title"
-    t.text     "preview_html", :limit => 255
+    t.text     "description"
+    t.text     "preview_html"
   end
 
   create_table "tags", :force => true do |t|
