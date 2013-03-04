@@ -1,0 +1,2 @@
+module ShareViewsHelper
+end
