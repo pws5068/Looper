@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title><%= content_for?(:title) ? yield(:title) : "Looper" %></title>
     <%= csrf_meta_tags %>
 
@@ -45,6 +45,19 @@
 			    <input id="LOOPER_TAGS" name="LOOPER_TAGS" text="text" placeholder="Tags separated by spaces..." />
 			    <input id="LOOPER_COMPLETE" name="LOOPER_COMPLETE" text="text" placeholder="Looped!" disabled="disabled" />
 			</div>
+      <div class="profile-menu">
+        <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile Pic</a>
+
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a tabindex="-1" href="#">Action</a></li>
+            <li class="disabled"><a tabindex="-1" href="#">Change Profile Pic</a></li>
+            <li><a tabindex="-1" href="#">↓ Chrome Extension</a></li>
+            <li class="divider"></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
           <% else %>
             <ul class="nav">             
                 <li><%= link_to "Sign In", new_user_session_path  %></li>
