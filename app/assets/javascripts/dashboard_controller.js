@@ -9,12 +9,12 @@ function DashboardController($scope, $routeParams, $http) {
 	});
 	
 	if ($scope.groupId != null) {
-		$http.get('/groups/' + $scope.groupId + '/shares').success(function(data) {
+		$http.get('/groups/' + $scope.groupId + '/shares.json').success(function(data) {
 			$scope.handleShares(data);
 		});		
 	} else {
 		// TODO: Show loader if local data is empty
-		$http.get('/shares').success(function(data) {
+		$http.get('/shares.json').success(function(data) {
 			$scope.handleShares(data);
 		});		
 	}
