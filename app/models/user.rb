@@ -12,13 +12,19 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :thumb_url, :icon_url
+  attr_accessible :name, :thumb_url, :icon_url, :uid
 
   def fb_friends
     graph = facebook()
     if graph
       graph.get_connection('me','friends')
     end
+  end
+
+  def self.find_or_create_from_facebook( graph_id )
+    user = User.where("uid=#{graph_id}").first()
+    user = User.create( :uid => graph_id ) unless user
+    user
   end
 
   def fb_connected?
@@ -63,8 +69,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def email_required?
+    super && uid.blank?
+  end
+
   def password_required?
-    super && provider.blank?
+    super && uid.blank?
   end
 
   def facebook

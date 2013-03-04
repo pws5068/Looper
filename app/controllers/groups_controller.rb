@@ -50,15 +50,30 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(params[:group])
+    users = []
+    if params[:friends]
+      users = User.find( params[:friends] )
+    end
+
+    if params[:network_friends] && user.fb_connected?
+      fb_users = current_user.fb_friends()
+
+      for friend in params[:network_friends]
+        for fb_user in fb_users
+          users <<  User.find_or_create_from_facebook( fb_user )
+        end
+      end
+    end
+
+    if users.any?
+      @group = Group.find_or_create( users )
+    end
 
     respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+      if @group
         format.json { render json: @group, status: :created, location: @group }
       else
-        format.html { render action: "new" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: false, status: :unprocessable_entity }
       end
     end
   end
