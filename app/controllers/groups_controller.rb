@@ -60,7 +60,7 @@ class GroupsController < ApplicationController
 
       for friend in params[:network_friends]
         for fb_user in fb_users
-          if fb_user['id'] == fb_user
+          if fb_user['id'] == friend
             users <<  User.find_or_create_from_facebook( fb_user )
           end
         end
