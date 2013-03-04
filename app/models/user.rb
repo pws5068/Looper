@@ -21,9 +21,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_or_create_from_facebook( graph_id )
+  def self.find_or_create_from_facebook( data )
+    graph_id = data['id']
+    name = data['name']
+    
     user = User.where("uid=#{graph_id}").first()
-    user = User.create( :uid => graph_id ) unless user
+    user = User.create( :uid => graph_id, :name => name ) unless user
     user
   end
 
