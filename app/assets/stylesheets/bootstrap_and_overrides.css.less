@@ -54,15 +54,21 @@ h3 {
 
 #wrap {
   min-height: 100%;
+  padding: 0;
 }
 #main {
   overflow: auto;
   padding-bottom: -150px;
   padding-left: 0;
+  padding-right:0;
 }
 
 /* Navigation Bar */
-
+.brand {
+  background-image: image-url('looper_logo.png') no-repeat;
+  height: 30px;
+  width: 30px;
+}
 .navbar {
 	margin-bottom:0;
 }
@@ -84,9 +90,33 @@ h3 {
 .share h3, p{
   margin:0;
   padding:0;
+  line-height: 20px;
+}
+.share h3 a {
+  color: #303030;
+  font-weight: 400;
+  font-size: 20px;
+}
+.share h3 a:hover {
+  text-decoration: underline;
 }
 .shares-container {
   padding-left: 0;
+}
+.share-contents {
+  margin-top:30px;
+}
+.share-description {
+  color: #adadad;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.07em;
+  padding: 0 0 5px 0;
+}
+.user-img-read {
+  opacity: 1;
+  width: 30px;
+  height: 30px;
 }
 .span8 {
 	margin-left:0 !important;
@@ -99,7 +129,6 @@ h3 {
    padding-right: 0;
    padding-left: 60px;
 }
-
 .looper-footer {
 	text-align: left;
 	padding: 30px 0;
@@ -218,13 +247,10 @@ h3 {
 	float: left;
 	background:image-url('icon_time.png') no-repeat;
 }
-
 .group-time {
 	font-size: 11px;
 	color: #aaaaaa;
-  letting-spacing: .04em;
 }
-
 .group-alias {
 	font-size: 14px;
 	font-weight: 100;

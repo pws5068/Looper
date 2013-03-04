@@ -16,15 +16,14 @@
 				<div class="span2">
 					<img src="{{share.thumb}}" width="200" height="150" />
 				</div>
-				<div class="span10">
+				<div class="span10 share-contents">
 					<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
-					<p>{{share.description}}</p>
-					<p>{{share.prettyDate}}</p>
+					<p class="share-description">{{share.description}}</p>
 					<span ng-repeat="user in share.group.users">
-						<img src="{{user.thumb_url}}" alt="{{user.name}}" />
+						<img class="user-img-read" src="{{user.thumb_url}}" alt="{{user.name}}" />
 					</span>
 					<div>
-						<span class="group-time-icon"></span> <span class="group-time ng-binding">2013-03-03T08:27:10Z</span>
+						<span class="group-time-icon"></span> <span class="group-time ng-binding">{{share.prettyDate}}</span>
 					</div>
 				</div>
 			</div>
