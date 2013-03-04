@@ -17,24 +17,30 @@
     padding: 10px 0px 10px 30px;
 }
 
-#LOOPER_NAMES {
+#LOOPER_NAMES, #LOOPER_TAGS {
     background: none;
     border: 0;
     color: #FFFFFF;
-    float: left;
     font: 18px 'Open Sans', Arial, sans-serif;
     height: 48px;
+    left: 100px;
     letter-spacing: 0.06em;
     padding: 0;
-    margin: 0 0 0 30px;
+    position: absolute;
+    margin: 0 0 0 0px;
     width: 85%;
 }
 
-#LOOPER_NAMES:focus {
+#LOOPER_TAGS {
+    display: none;
+    opacity: 0;
+}
+
+#LOOPER_NAMES:focus, #LOOPER_TAGS:focus {
     outline: none;
 }
 
-#LOOPER_NAMES::-webkit-input-placeholder {
+#LOOPER_NAMES::-webkit-input-placeholder, #LOOPER_TAGS::-webkit-input-placeholder {
     color: #429977;
 }
 
@@ -59,7 +65,7 @@
     display: block;
     font: 16px 'Open Sans', Arial, sans-serif;
     height: 30px;
-    padding: 10px 0 0 91px;
+    padding: 10px 0 0 100px;
 }
 
 .ui-menu-item a.ui-state-focus {
