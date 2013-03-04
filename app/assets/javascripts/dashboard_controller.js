@@ -68,7 +68,7 @@ function DashboardController($scope, $routeParams, $http) {
 		
 		if ($scope.searchQuery != null) {
 			filteredShares = filteredShares.filter(function(share) {
-				return share.title.indexOf($scope.searchQuery) !== -1 || share.title.indexOf($scope.searchQuery) !== -1;
+				return share.title.toLowerCase().indexOf($scope.searchQuery.toLowerCase()) !== -1 ||share.description.toLowerCase().indexOf($scope.searchQuery.toLowerCase()) !== -1;
 			});
 		}
 		

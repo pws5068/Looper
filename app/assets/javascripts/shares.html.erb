@@ -7,7 +7,7 @@
 					<li ng-click="setMediaType('photo')" class="filter-nav-button photo">Photos</a></li>
 					<li ng-click="setMediaType('audio')" class="filter-nav-button audio">Music</a></li>						
 				</ul>
-				<input class="filter-search" placeholder="SEARCH"></input>
+				<input class="filter-search" ng-model="search" placeholder="SEARCH" ng-change="setSearchQuery(search)"></input>
 			</div>
 		</div>
 	<div class="container-fluid shares-container">

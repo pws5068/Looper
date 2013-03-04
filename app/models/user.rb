@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :thumb_url
 
 
-  def friends
+  def fb_friends
     graph = facebook()
     if graph
       graph.get_connection('me','friends')
@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
 
   def fb_connected?
     oauth_token.present?
+  end
+
+  def friends
+    User.all() # todo -- this function should return users that i'm in groups with
   end
 
   def self.from_omniauth(auth)
