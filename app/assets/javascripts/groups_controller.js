@@ -28,10 +28,12 @@ function GroupsController($scope, $window, $http) {
 	}
 	
 	$scope.selectGroup = function(group, $event) {
-		//ng-class="{active : isSelected(section)}"
+
+		var unselecting = group == $scope.selectedGroup;
+		
 		$scope.selectedGroup = group;
-		console.log($event);
-		if (group == null) {
+		
+		if (group == null || unselecting) {
 			$window.location.href = "#/shares";			
 		} else {
 			$window.location.href = "#/shares/" + group.id;			
