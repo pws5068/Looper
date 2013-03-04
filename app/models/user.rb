@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_from_facebook( data )
-    user = User.where("uid=#{data['id']}").first()
+    user = User.where("uid='#{data['id']}'").first()
 
     unless user
       User.create({
