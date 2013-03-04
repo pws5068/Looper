@@ -46,9 +46,9 @@
 			    <input id="LOOPER_TAGS" name="LOOPER_TAGS" text="text" placeholder="Tags separated by spaces..." />
 			    <input id="LOOPER_COMPLETE" name="LOOPER_COMPLETE" text="text" placeholder="Looped!" disabled="disabled" />
 			</div>
-      <div class="profile-menu">
+      <div class="profile-menu" ng-controller="ProfileMenuController">
         <div class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile Pic</a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="{{currentUser.thumb_url}}" alt="{{currentUser.name}}" /></a>
 
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <li class="disabled"><a tabindex="-1" href="#">Change Swatch Color</a></li>
