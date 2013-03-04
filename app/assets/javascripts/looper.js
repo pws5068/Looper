@@ -10,10 +10,17 @@
     Looper.prototype = {
         init: function() {
             var self = this;
+            var cancelCode = 27;
             
             $('#LOOPER_URL').keypress(function(event) {
                 if (event.keyCode == 13) {
                     self.transitionToNames();
+                }
+            });
+            
+            $('#LOOPER_URL').keyup(function(event) {
+	            if (event.keyCode == cancelCode) {
+	                self.reset();
                 }
             });
             
@@ -28,12 +35,20 @@
             $('#LOOPER_NAMES').keyup(function(event) {
                 if (event.keyCode == 8) {
                     self.checkForDeletedName();
+                } else if (event.keyCode == cancelCode) {
+	                self.reset();
                 }
             });
 
             $('#LOOPER_TAGS').keypress(function(event) {
                 if (event.keyCode == 13) {
                     self.submitLoop();
+                }
+            });
+            
+            $('#LOOPER_TAGS').keyup(function(event) {
+               if (event.keyCode == cancelCode) {
+	                self.reset();
                 }
             });
 
@@ -326,6 +341,12 @@
             setTimeout(function() {
 	        	self.reset(); 
             }, 1000);
+            
+            var data = {url:url, group_id:1};
+            $.post('/shares', data, function(inData) {
+	            console.log(inData);
+	            $window.location.href = "#/shares"
+           });            
         }
     };
 
