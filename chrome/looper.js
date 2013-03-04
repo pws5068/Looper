@@ -81,6 +81,12 @@
                         }
                     });
 
+                    $('#LOOPER_NAMES').keyup(function(event) {
+                        if (event.keyCode == 8) {
+                            self.checkForDeletedName();
+                        }
+                    })
+
                     self.loadGroupsData();
                 }
             };
@@ -91,7 +97,7 @@
             var self = this;
 
             $.ajax({
-                url: 'http://fathomless-lake-4709.herokuapp.com/users/friends.json',//http://fathomless-lake-4709.herokuapp.com/groups.json',
+                url: 'http://looper-io.herokuapp.com/users/friends.json',//http://fathomless-lake-4709.herokuapp.com/groups.json',
                 type: 'GET'
             }).done(function(data) {
                 var groups = [];
@@ -187,6 +193,23 @@
                     event.preventDefault();
                 }
             });
+        },
+
+        /*
+         * Checks to see if the current input text has removed a name that is in the this.names array
+         */
+
+        checkForDeletedName: function() {
+            var namesCopy = this.names,
+                term = $('#LOOPER_NAMES').val();
+
+            this.names.forEach(function(name, index) {
+                if (term.indexOf(name) == -1) {
+                    namesCopy.splice(index, 1);
+                }
+            });
+
+            this.names = namesCopy;
         },
 
         /*
