@@ -25,6 +25,7 @@ john = group.users.create({
   name: 'John Doe',
   email: 'johndoe@gmail.com',
   password: '35jkljsdf&F&(sdf' ,
+  uid: 'sjdlfjsdfljsd',
   thumb_url: 'http://d1w5mwt9nqclox.cloudfront.net/media/cache/user_pics/ToothlessPerson_thumbnail.jpg'
   },
   :without_protection => true
@@ -34,6 +35,7 @@ jane = group.users.create({
   name: 'Jane Smith',
   email: 'janesmith@gmail.com',
   password: 'slkdfjsljf#(Jfs' ,
+  uid: 'l24jlksjflsjdf',
   thumb_url: 'http://media-cache-ec0.pinterest.com/avatars/catnnis-1353484328.jpg'
   },
   :without_protection => true

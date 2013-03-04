@@ -11,6 +11,12 @@
         init: function() {
             var self = this;
             
+            $('#LOOPER_URL').keypress(function(event) {
+                if (event.keyCode == 13) {
+                    self.transitionToNames();
+                }
+            });
+            
             $('#LOOPER_NAMES').keypress(function(event) {
                 if (event.keyCode == 13) {
                     self.transitionToTags();
@@ -38,18 +44,26 @@
         	this.names = [];
         	this.tags = [];
         
-	    	$('#LOOPER_NAMES').css({
+	    	$('#LOOPER_URL').css({
 		    	paddingLeft: '0px',
 		    	opacity: 1
 	    	})
 	    	.val('')
-	    	.autocomplete("enable");
 	    	
 	    	$('#LOOPER_TAGS').css({
 		    	paddingLeft: '0px',
 		    	opacity: 0,
 		    	display: 'none'
 	    	}).val('');
+	    	
+	    	$('#LOOPER_NAMES').css({
+		    	paddingLeft: '0px',
+		    	opacity: 0,
+		    	display: 'none'
+	    	}).val('')
+	    	.autocomplete("enable");
+	    	;
+
 	    	
 	    	$('#LOOPER_COMPLETE').css({
 		    	opacity: 0,
@@ -216,6 +230,30 @@
         _updateInputToCurrentNameList: function() {
             $('#LOOPER_NAMES').val(this._stringByIncludingAllCurrentNames(true));
         },
+        
+        /*
+         * Animate the transition from the names input to the tags input
+         */
+
+        transitionToNames: function() {
+            $('#LOOPER_URL')
+            .animate({
+                paddingLeft: '100px',
+                opacity:0
+            }, {
+                duration: 300,
+                easing: 'swing'
+            });
+
+            $('#LOOPER_NAMES').css('display', 'block').animate({
+                opacity: 1
+            }, {
+                duration: 300,
+                complete: function() {
+                    $('#LOOPER_NAMES').focus();
+                }
+            });
+        },
 
         /*
          * Animate the transition from the names input to the tags input
@@ -268,7 +306,7 @@
             });
 
             /*
-             * Animate the change osut
+             * Animate the change out
              */
 
             $('#LOOPER_TAGS').animate({

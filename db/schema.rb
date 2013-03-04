@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304021054) do
+ActiveRecord::Schema.define(:version => 20130304075218) do
 
   create_table "group_users", :force => true do |t|
     t.integer  "group_id"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20130304021054) do
     t.boolean  "subscribed"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["uid"], :name => "index_users_on_uid", :unique => true
 
 end

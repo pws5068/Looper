@@ -12,7 +12,7 @@
     padding: 10px 0px 10px 30px;
 }
 
-#LOOPER_NAMES, #LOOPER_TAGS, #LOOPER_COMPLETE {
+#LOOPER_URL, #LOOPER_NAMES, #LOOPER_TAGS, #LOOPER_COMPLETE {
     background: none;
     border: 0;
     color: #FFFFFF;
@@ -26,16 +26,16 @@
     width: 85%;
 }
 
-#LOOPER_TAGS, #LOOPER_COMPLETE {
+#LOOPER_NAMES, #LOOPER_TAGS, #LOOPER_COMPLETE {
     display: none;
     opacity: 0;
 }
 
-#LOOPER_NAMES:focus, #LOOPER_TAGS:focus, #LOOPER_COMPLETE {
+#LOOPER_URL:focus, #LOOPER_NAMES:focus, #LOOPER_TAGS:focus, #LOOPER_COMPLETE {
     outline: none;
 }
 
-#LOOPER_NAMES::-webkit-input-placeholder, #LOOPER_TAGS::-webkit-input-placeholder, #LOOPER_COMPLETE::-webkit-input-placeholder {
+#LOOPER_URL::-webkit-input-placeholder, #LOOPER_NAMES::-webkit-input-placeholder, #LOOPER_TAGS::-webkit-input-placeholder, #LOOPER_COMPLETE::-webkit-input-placeholder {
     color: #429977;
 }
 
