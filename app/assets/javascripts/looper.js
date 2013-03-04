@@ -342,11 +342,14 @@
 	        	self.reset(); 
             }, 1000);
             
-            var data = {share:{url:url, group_id:1}};
-            $.post('/shares.json', data, function(inData) {
-	            console.log(inData);
-	            /*$window.location.href = "#/shares"*/
-           });            
+            var groups = {friends:idUsers, network_friends:graphIdUsers};
+            $.post('/groups.json', groups, function(inData){
+				var data = {share:{url:url, group_id:inData.id}};	                        	
+	            $.post('/shares.json', data, function(inData2) {
+		            console.log(inData);
+		            /*$window.location.href = "#/shares"*/
+	            });            	            
+            });
         }
     };
 

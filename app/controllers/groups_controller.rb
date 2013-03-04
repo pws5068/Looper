@@ -57,7 +57,7 @@ class GroupsController < ApplicationController
       users = User.find( params[:friends] )
     end
 
-    if params[:network_friends] && user.fb_connected?
+    if params[:network_friends] && current_user.fb_connected?
       fb_users = current_user.fb_friends()
 
       for friend in params[:network_friends]
