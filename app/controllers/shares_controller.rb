@@ -6,7 +6,7 @@ class SharesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @shares.to_json(:include => :share_views)  }
+      format.json { render json: @shares.to_json(:methods => :viewers)  }
     end
   end
 

@@ -27,6 +27,22 @@ class Share < ActiveRecord::Base
     end
   end
 
+  def viewers
+    viewers = []
+    users = group.users
+    for user in users
+      usr = user.attributes
+      usr[:viewed] = 0
+      for view in share_views
+        if user.id == view.user_id
+          usr[:viewed] = 1
+        end
+      end
+      viewers << usr
+    end
+    viewers
+  end
+
   private
   def self.get_youtube_video(identifier)
     client = yt_session()
@@ -43,5 +59,4 @@ class Share < ActiveRecord::Base
       :password => 'sincerely' , 
       :dev_key => 'AI39si5eqTcj26_n9Jjb_WsRfpy-xw0dOdWxMgUSmHtH3TSLmT_D2hTDQyJ-DHLRjfpxWJ1K65ccZe2N5x8Poj0Up0saky-TaQ' )
   end
-
 end
