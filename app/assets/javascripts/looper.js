@@ -342,10 +342,10 @@
 	        	self.reset(); 
             }, 1000);
             
-            var data = {url:url, group_id:1};
-            $.post('/shares', data, function(inData) {
+            var data = {share:{url:url, group_id:1}};
+            $.post('/shares.json', data, function(inData) {
 	            console.log(inData);
-	            $window.location.href = "#/shares"
+	            /*$window.location.href = "#/shares"*/
            });            
         }
     };
