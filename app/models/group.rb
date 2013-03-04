@@ -28,12 +28,16 @@ class Group < ActiveRecord::Base
 
     if !match
       group = Group.create()
-      for user in users
-        GroupUser.create( :user_id => user.id, :group_id => group.id )
-      end
+      group.add_users users 
     else
       group = match
     end
     group
+  end
+
+  def add_users( users )
+    for user in users
+      GroupUser.create( :user_id => user.id, :group_id => id )
+    end
   end
 end
