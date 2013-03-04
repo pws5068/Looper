@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def current
+    respond_to do |format|
+      format.json { render json: current_user }
+    end
+  end
+
   def friends
     friends = current_user.friends()
     fb_friends = current_user.fb_friends()
