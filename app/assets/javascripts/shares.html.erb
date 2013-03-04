@@ -20,6 +20,7 @@
 					<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
 					<p>{{share.description}}</p>
 					<p>{{share.prettyDate}}</p>
+					<div class="preview-html" ng-bind-html-unsafe="share.preview_html"></div>
 					<span ng-repeat="user in share.group.users">
 						<img src="{{user.thumb_url}}" alt="{{user.name}}" />
 					</span>
