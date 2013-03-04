@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :thumb_url, :icon_url, :uid
 
-  def fb_friends
+  def fb_friend
     graph = facebook()
     if graph
       graph.get_connection('me','friends')
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       # @todo - why is this breaking in prod?
       #user.icon_url = "http://graph.facebook.com/#{auth.uid}/picture"
-      user.thumb_url = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
+      user.thumb_url = "http://graph.facebook.com/#{auth.uid}/picture"
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
     end
