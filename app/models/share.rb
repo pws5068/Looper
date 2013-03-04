@@ -99,10 +99,10 @@ class Share < ActiveRecord::Base
 
   def scrape_data
     if is_valid_youtube?
-      media_type = 'video'
+      self.media_type = 'video'
       youtubeify()
     elsif is_valid_audio?
-      media_type = 'audio'
+      self.media_type = 'audio'
       soundcloudify()
     end
   end
