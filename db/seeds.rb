@@ -42,7 +42,7 @@ jane = group.users.create({
 share = group.shares.create( 
   url: 'http://www.youtube.com/watch?v=PpccpglnNf0', 
   title: 'Goats Yelling Like Humans',
-  media_type: 'article',
+  media_type: 'video',
   thumb: 'http://farm4.staticflickr.com/3010/3081514239_c6c20cb0c6.jpg',
   description: 'has something to do with goats',
   preview_html: '<iframe width="420" height="315" src="http://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>'
