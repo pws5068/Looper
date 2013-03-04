@@ -41,6 +41,24 @@ function DashboardController($scope, $routeParams, $http) {
 		
 	};
 	
+	$scope.imageClassForMediaType = function(mediaType) {
+
+		var mediaCssType = "media-icon";
+
+		if (mediaType == "video") {
+			mediaCssType = "media-icon video-icon";
+		} else if (mediaType == "audio") {
+			mediaCssType = "media-icon audio-icon";
+		} else if (mediaType == "article") {
+			mediaCssType = "media-icon article-icon";
+		} else if (mediaType == "photo") {
+			mediaCssType = "media-icon photo-icon";
+		}
+		
+		console.log('media selector ' + mediaCssType);
+		return mediaCssType;
+	};
+	
 	/*
 		Sets the media type we are filtering
 	*/
