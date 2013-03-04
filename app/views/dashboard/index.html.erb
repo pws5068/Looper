@@ -3,10 +3,7 @@
 		<div class="groups-header">
 			<h3 class="groups-header-label">Loops</h3>
 		</div>
-		<ul id="groups">
-			<!--<li ng-click="selectGroup()">
-				All
-			</li>-->		
+		<ul id="groups">		
 			<li ng-repeat="group in groups" ng-click="selectGroup(group)" ng-class="{active : isSelectedGroup(group)}">
 				<div class="group-content">
 					<div class="group-update">

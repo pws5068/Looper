@@ -50,5 +50,10 @@ share = group.shares.create(
 
 share.save()
 
+view = ShareView.create(
+  user_id: john.id,
+  share_id: share.id
+)
+
 tag = share.tags.create( keyword: 'goat' )
 tag.save()
