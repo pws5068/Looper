@@ -1,7 +1,7 @@
 class SharesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def index
-    @shares = current_user.accessible_shares
+    @shares = current_user.accessible_shares.order("id desc")
 
     respond_to do |format|
       format.json { render json: @shares.to_json(:methods => :viewers)  }
