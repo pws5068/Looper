@@ -23,12 +23,14 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_from_facebook( data )
-    graph_id = data['id']
-    name = data['name']
+    user = User.where("uid=#{data['id']}").first()
 
-    user = User.where("uid=#{graph_id}").first()
-    user = User.create( :uid => graph_id, :name => name ) unless user
-    user
+    unless user
+      User.create({
+        :uid => data['id'], 
+        :name => data['name'], 
+        :provider => 'facebook'}, without_protection: true)
+    end
   end
 
   def fb_connected?
