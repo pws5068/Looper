@@ -65,17 +65,13 @@ h3 {
 
 /* Navigation Bar */
 .brand {
-  height: 30px;
-  width: 30px;
+  background: image-url('looper_logo@2x.png') no-repeat;
+  background-size: 30px 30px;
+  margin-top:10px;
   display:block;
   text-indent: -9999px;
 }
-.brand a {
-  background: image-url('looper_logo@2x.png') no-repeat 0 0;
-  display:block;
-  height: 30px;
-  width: 30px;
-}
+
 .navbar {
 	margin-bottom:0;
 }
@@ -86,7 +82,57 @@ h3 {
   border: 0;
   border-radius: 0;
 }
-
+.navbar .nav > li > a {
+  color: white;
+  text-shadow: none;
+  padding: 15px 0 0 20px;
+}
+.looper-share {
+  padding: 8px 5px 5px 10px;
+  margin:5px;
+  display:block ;
+  text-indent: 5px;
+  background-color: transparent;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  float:left;
+}
+.looper-share-field {
+  background: transparent;
+  border-style: none;
+  font-size: 18px;
+  font-weight: 600;
+}
+.looper-share-field:focus {
+  outline: none;
+}
+.looper-share-field input[placeholder], [placeholder], *[placeholder] {
+  color: #fefefe;
+}
+.looper-share-field::-webkit-input-placeholder { /* WebKit browsers */
+    color: #40846a;
+}
+.looper-share-field:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #40846a;
+}
+.looper-share-field::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #40846a;
+}
+.looper-share-field:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #40846a;
+}
+.looper-share-field input {
+  color: #40846a;
+}
+.share-thumb {
+  width:200px;
+  height:200px;
+}
+.media-thumb {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+}
 .share {
 	height:151px;
   overflow: hidden;
@@ -231,6 +277,7 @@ h3 {
 	text-transform: uppercase;
 	height:50px;
 	background-color: #9ad9c0;	
+  letter-spacing: 1px;
 }
 
 .groups-header-label {
@@ -261,6 +308,12 @@ h3 {
 .group-time {
 	font-size: 11px;
 	color: #aaaaaa;
+}
+.pretty-date {
+  color: #aaaaaa;
+}
+.pretty-date:hover {
+  color: #aaaaaa;
 }
 .group-alias {
 	font-size: 14px;
@@ -374,7 +427,7 @@ h3 {
   text-indent: 5px;
   background-color: transparent;
   border-style: none;
-  letter-spacing: 0.065em;
+  letter-spacing: 0.1em;
   font-weight: 600;
   background: image-url('icon_search.png') no-repeat;
   background-position: 10px 8px;
@@ -386,16 +439,16 @@ h3 {
   color: #f4fffb;
 }
 .filter-search::-webkit-input-placeholder { /* WebKit browsers */
-    color: #7fb7a1;
+  color: #7fb7a1;
 }
 .filter-search:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #7fb7a1;
+  color: #7fb7a1;
 }
 .filter-search::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #7fb7a1;
+  color: #7fb7a1;
 }
 .filter-search:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #7fb7a1;
+  color: #7fb7a1;
 }
 .filter-search input {
   color: #7fb7a1;
