@@ -90,7 +90,7 @@
             var self = this;
 
             $.ajax({
-                url: 'http://localhost:3000/users/friends.json',//http://fathomless-lake-4709.herokuapp.com/groups.json',
+                url: '/users/friends.json',
                 type: 'GET'
             }).done(function(data) {
                 var groups = [];
