@@ -7,15 +7,12 @@ class Group < ActiveRecord::Base
 
   # @todo - Mega Hackish
   def self.find_or_create( users )
-    user_ids = []
-    for user in users
-      user_ids << user.id
-    end
+    user_ids = users.collect(&:id)
 
     for group in users.first().groups
       g_users = group.users
 
-      if g_users.count == user_ids.size
+      if g_users.count == user_ids.count
         valid = true
         for user in g_users
           if !user_ids.include?(user.id)
