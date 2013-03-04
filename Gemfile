@@ -10,6 +10,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'koala'
 gem 'youtube_it'
+gem 'soundcloud'
 gem 'debugger'
 
 # Gems used only for assets and not required

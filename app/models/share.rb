@@ -10,8 +10,8 @@ class Share < ActiveRecord::Base
 
   before_save :scrape_data
 
-  def youtubeify( )
-    video = get_video()
+  def youtubeify
+    video = get_video_details()
     if video
       self.title = video.title
       self.description = video.description
@@ -19,6 +19,21 @@ class Share < ActiveRecord::Base
       self.url = video.player_url
       self.preview_html = video.embed_html5()
       self.media_type = 'video'
+    else
+      false
+    end
+  end
+
+  def soundcloudify
+    track = get_audio_details()
+    debugger
+    if track
+      self.title = track.title
+      self.description = track.description
+      self.url = track.permalink_url
+      self.thumb = track.artwork_url
+      track.preview_html = 
+        "<iframe width='100%' height='166' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F#{track.id}'></iframe>"
     else
       false
     end
@@ -58,11 +73,15 @@ class Share < ActiveRecord::Base
     end
   end
 
-  def is_youtube?
-     !! get_video()
+  def is_valid_youtube?
+     !! get_video_details() # probably shouldnt make these calls twice
   end
 
-  def get_video
+  def is_valid_audio?
+    !! get_audio_details()
+  end
+
+  def get_video_details
     client = Share.yt_session()
     begin
       client.video_by( url ) 
@@ -71,21 +90,20 @@ class Share < ActiveRecord::Base
     end
   end
 
+  def get_audio_details
+    client = Share.sc_session()
+    track = client.get('/resolve', :url => url)
+  end
+
   private
 
   def scrape_data
-    if is_youtube?
+    if is_valid_youtube?
       media_type = 'video'
-      youtubeify( )
-    end
-  end
-
-  def self.get_youtube_video(identifier)
-    client = yt_session()
-    begin
-      video = client.video_by identifier
-    rescue OpenURI::HTTPError
-      false
+      youtubeify()
+    elsif is_valid_audio?
+      media_type = 'audio'
+      soundcloudify()
     end
   end
 
@@ -95,5 +113,10 @@ class Share < ActiveRecord::Base
       :username => 'looper.io.app@gmail.com' , 
       :password => 'sincerely' , 
       :dev_key => 'AI39si5eqTcj26_n9Jjb_WsRfpy-xw0dOdWxMgUSmHtH3TSLmT_D2hTDQyJ-DHLRjfpxWJ1K65ccZe2N5x8Poj0Up0saky-TaQ' )
+  end
+
+  # Soundcloud
+  def self.sc_session
+    client = Soundcloud.new(:client_id => '64ef72bdca117ec1660e6b29124b1fc6')
   end
 end
