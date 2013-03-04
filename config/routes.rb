@@ -20,7 +20,12 @@ Looper::Application.routes.draw do
     end
   end
 
-  root :to => 'home#index'
+  authenticated :user do
+    root :to => "dashboard#index"
+  end
+
+  root :to => "home#index"
+
   get 'dashboard/index'
   
   # The priority is based upon order of creation:
