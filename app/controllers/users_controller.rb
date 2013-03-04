@@ -20,11 +20,13 @@ class UsersController < ApplicationController
   end
 
   def friends
+    groups = current_user.groups
     friends = current_user.friends()
     fb_friends = current_user.fb_friends()
 
     respond_to do |format|
       format.json { render json: {
+          :groups => groups,
           :friends => friends,
           :network_friends => fb_friends
         }}
