@@ -15,6 +15,7 @@ Looper::Application.routes.draw do
 
   resources :users do
     collection do
+      get 'current'
       get 'friends'
     end
   end
