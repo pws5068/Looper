@@ -22,14 +22,7 @@ function DashboardController($scope, $routeParams, $http) {
 	/**
 		Convenience methods for processing shares after HTTP callback
 	*/
-	$scope.handleShares = function(shares) {
-		for (var i = 0; i < shares.length; i++) {
-			var share = shares[i];
-			var groupId = share.group_id;
-			var group = Group.getGroupById(groupId);
-			share.group = group;
-		}
-		
+	$scope.handleShares = function(shares) {		
 		$scope.allShares = shares;
 		$scope.filterAllShares();
 	};
@@ -40,6 +33,10 @@ function DashboardController($scope, $routeParams, $http) {
 	$scope.selectShare = function(share) {
 		
 	};
+	
+	$scope.hasUserSeen = function(user) {
+		return user.viewed;
+	}
 	
 	$scope.imageClassForMediaType = function(mediaType) {
 
@@ -55,7 +52,6 @@ function DashboardController($scope, $routeParams, $http) {
 			mediaCssType = "media-icon photo-icon";
 		}
 		
-		console.log('media selector ' + mediaCssType);
 		return mediaCssType;
 	};
 	
