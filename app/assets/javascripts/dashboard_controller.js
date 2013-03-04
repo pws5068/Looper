@@ -31,10 +31,14 @@ function DashboardController($scope, $routeParams, $http) {
 		When the user selects a share
 	*/
 	$scope.selectShare = function(share, $event) {
-		var eventTarget = $($event.currentTarget),
-			preview = eventTarget.find('.preview-html'),
-			hasHideClass = preview.hasClass('hide');
-			
+		var eventTarget = $($event.currentTarget);
+		$scope.toggleShare(eventTarget);		
+	};
+	
+	$scope.toggleShare = function(eventTarget) {
+		var preview = eventTarget.find('.preview-html');
+		var hasHideClass = preview.hasClass('hide');
+
 		eventTarget.animate({
 			height: eventTarget.height() + (preview.height() * (hasHideClass ? 1 : -1))
 		}, {
