@@ -77,7 +77,7 @@
                         if (event.keyCode == 13) {
                             self.transitionToTags();
                         } else if (event.keyCode == 32) {
-                            self.checkForCompletedName();
+                            self.checkForCompletedName(event);
                         }
                     });
 
@@ -136,17 +136,37 @@
                 self.groups = groups;
                 self.groupUserNames = groupUserNames;
 
+                /*
+                 * Set up the auto complete plugin
+                 */
+
                 $('#LOOPER_NAMES').autocomplete({
                     source: function(request, response) {
-                        var term = self._removeCurrentNamesFromString(request.term);
+                        var term = self._removeCurrentNamesFromString(request.term),
+                            matches = $.ui.autocomplete.filter(self.groupUserNames, term),
+                            finalMatches = [];
 
-                        if (term.length > 2) response($.ui.autocomplete.filter(self.groupUserNames, term));
+                        matches.forEach(function (match, index) {
+                            finalMatches.push({
+                                label: match,
+                                value: self._stringByIncludingAllCurrentNames(true) + match
+                            });
+                        });
+
+                        if (term.length > 2) response(finalMatches);
+                    },
+
+                    select: function(event, ui) {
+                        self.names.push(ui.item.label);
+
+                        event.preventDefault();
+                        self._updateInputToCurrentNameList();
                     }
                 });
             });
         },
 
-        checkForCompletedName: function() {
+        checkForCompletedName: function(event) {
             var term = this._removeCurrentNamesFromString($('#LOOPER_NAMES').val());
                 self = this;
 
@@ -154,6 +174,9 @@
                 if (term == user.name.toLowerCase()) {
                     self.names.push(user.name);
                     $('#LOOPER_NAMES').autocomplete("close");
+
+                    self._updateInputToCurrentNameList();
+                    event.preventDefault();
                 }
             });
         },
@@ -162,10 +185,29 @@
             var term = $.trim(string.toLowerCase());
 
             this.names.forEach(function(name, index) {
+                term = term.replace(',', '');
                 term = $.trim(term.replace(name.toLowerCase(), ''));
             });
 
             return term;
+        },
+
+        _stringByIncludingAllCurrentNames: function(includeCommaEnding) {
+            var string = '';
+
+            this.names.forEach(function(name, index) {
+                string += name + ', ';
+            });
+
+            if (!includeCommaEnding) {
+                string = string.substring(0, string.length - 2);
+            }
+
+            return string;
+        },
+
+        _updateInputToCurrentNameList: function() {
+            $('#LOOPER_NAMES').val(this._stringByIncludingAllCurrentNames(true));
         },
 
         transitionToTags: function() {
