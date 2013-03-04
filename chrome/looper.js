@@ -142,6 +142,10 @@
 
                 $('#LOOPER_NAMES').autocomplete({
                     source: function(request, response) {
+                        /*
+                         * Take the matches based on the current term and turn it into a formatted string
+                         */
+
                         var term = self._removeCurrentNamesFromString(request.term),
                             matches = $.ui.autocomplete.filter(self.groupUserNames, term),
                             finalMatches = [];
@@ -166,6 +170,10 @@
             });
         },
 
+        /*
+         * When called, it will check to see if a completed name is in the string that is not already in this.names
+         */
+
         checkForCompletedName: function(event) {
             var term = this._removeCurrentNamesFromString($('#LOOPER_NAMES').val());
                 self = this;
@@ -181,6 +189,10 @@
             });
         },
 
+        /*
+         * Takes a string and removes anything from it that is currently in this.names
+         */
+
         _removeCurrentNamesFromString: function(string) {
             var term = $.trim(string.toLowerCase());
 
@@ -191,6 +203,10 @@
 
             return term;
         },
+
+        /*
+         * Generates a formatted string from this.names (ex. Rick Harrison, Zain Ali)
+         */
 
         _stringByIncludingAllCurrentNames: function(includeCommaEnding) {
             var string = '';
@@ -206,9 +222,17 @@
             return string;
         },
 
+        /*
+         * Used to update the input area to a formatted string based on this.names
+         */
+
         _updateInputToCurrentNameList: function() {
             $('#LOOPER_NAMES').val(this._stringByIncludingAllCurrentNames(true));
         },
+
+        /*
+         * Animate the transition from the names input to the tags input
+         */
 
         transitionToTags: function() {
             $('#LOOPER_NAMES').autocomplete("close").autocomplete("disable")
