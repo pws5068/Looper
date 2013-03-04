@@ -85,13 +85,13 @@
 
         loadGroupsData: function() {
             $.ajax({
-                url: 'http://fathomless-lake-4709.herokuapp.com/groups.json',
+                url: 'http://fathomless-lake-4709.herokuapp.com/users/friends.json',//http://fathomless-lake-4709.herokuapp.com/groups.json',
                 type: 'GET'
             }).done(function(data) {
                 var groups = [];
                 var groupUserNames = [];
 
-                data.forEach(function(group, index) {
+                /*data.forEach(function(group, index) {
                     var object = {
                         id: group.id,
                         users: ''
@@ -105,8 +105,16 @@
 
                     groups.push(object);
                     groupUserNames.push(object.users);
+                });*/
+
+                data.friends.forEach(function(friend, index) {
+                    if (friend.name) groupUserNames.push(friend.name);
                 });
 
+                data.network_friends.forEach(function(friend, index) {
+                    if (friend.name) groupUserNames.push(friend.name);
+                });
+                
                 this.groups = groups;
                 this.groupUserNames = groupUserNames;
 
