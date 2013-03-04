@@ -38,17 +38,19 @@
           </a>
           <a class="brand" href="/">Looper</a>
           <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <div class="looper-share">
-              <input id="#" placeholder="Share media" class="looper-share-field"></input>
-            </div>
-              <% if user_signed_in? %>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-              <% else %>
+	          
+          <% if user_signed_in? %>
+			<div>
+			    <input id="LOOPER_NAMES" name="LOOPER_NAMES" type="text" placeholder="Share with..." />
+			    <input id="LOOPER_TAGS" name="LOOPER_TAGS" text="text" placeholder="Tags separated by spaces..." />
+			    <input id="LOOPER_COMPLETE" name="LOOPER_COMPLETE" text="text" placeholder="Looped!" disabled="disabled" />
+			</div>
+          <% else %>
+            <ul class="nav">             
                 <li><%= link_to "Sign In", new_user_session_path  %></li>
                 <li><%= link_to "Register", new_user_registration_path  %></li>
-              <% end %>
-            </ul>
+            </ul>                
+          <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
