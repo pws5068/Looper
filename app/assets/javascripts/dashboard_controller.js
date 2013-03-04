@@ -30,8 +30,34 @@ function DashboardController($scope, $routeParams, $http) {
 	/*
 		When the user selects a share
 	*/
-	$scope.selectShare = function(share) {
+	$scope.selectShare = function(share, $event) {
+		var eventTarget = $($event.currentTarget),
+			preview = eventTarget.find('.preview-html'),
+			hasHideClass = preview.hasClass('hide');
+			
+		eventTarget.animate({
+			height: eventTarget.height() + (preview.height() * (hasHideClass ? 1 : -1))
+		}, {
+			duration: 300,
+			easing: 'swing'
+		});
 		
+		preview.css('opacity', hasHideClass ? 0 : 1)
+		.animate({
+			opacity: hasHideClass ? 1 : 0
+		}, {
+			duration: 300,
+			easing: 'swing',
+			complete: function() {
+				if (!hasHideClass) {
+					preview.addClass('hide');
+				}
+			}
+		});
+		
+		if (hasHideClass) {
+			preview.removeClass('hide');
+		}
 	};
 	
 	$scope.hasNotUserSeen = function(user) {

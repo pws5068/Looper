@@ -12,7 +12,7 @@
 		</div>
 	<div class="container-fluid shares-container">
 		<div class="span12">
-			<div ng-repeat="share in shares" class="row-fluid share" ng-click="selectShare(share)">
+			<div ng-repeat="share in shares" class="row-fluid share" ng-click="selectShare(share, $event)">
 				<div class="span2">
 					<img src="{{share.thumb}}" width="200" height="150" />
 				</div>
