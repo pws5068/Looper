@@ -71,6 +71,12 @@
                         }
                     });
 
+                    $('#LOOPER_NAMES').keypress(function(event) {
+                        if (event.keyCode == 13) {
+                            self.transitionToTags();
+                        }
+                    });
+
                     self.loadGroupsData();
                 }
             };
@@ -107,6 +113,26 @@
                 $('#LOOPER_NAMES').autocomplete({
                     source: groupUserNames
                 });
+            });
+        },
+
+        transitionToTags: function() {
+            $('#LOOPER_NAMES').autocomplete("close").autocomplete("disable")
+            .animate({
+                paddingLeft: '100px',
+                opacity:0
+            }, {
+                duration: 300,
+                easing: 'swing'
+            });
+
+            $('#LOOPER_TAGS').css('display', 'block').animate({
+                opacity: 1
+            }, {
+                duration: 300,
+                complete: function() {
+                    $('#LOOPER_TAGS').focus();
+                }
             });
         },
 
