@@ -1,5 +1,5 @@
 class SharesController < ApplicationController
-
+  skip_before_filter :verify_authenticity_token
   def index
     @shares = current_user.accessible_shares
 

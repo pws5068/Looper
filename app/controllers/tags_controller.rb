@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   # GET /tags
   # GET /tags.json
   def index
