@@ -63,9 +63,21 @@ h3 {
   padding-right:0;
 }
 /* Homepage */
+.home-heading {
+  margin-top:-10px;
+}
 .home-header {
   background: #58b18f;
-  height:200px;
+  height:350px;
+  padding:100px 0 0 0;
+}
+.looper-large-logo {
+  background: image-url('looper_logo_lg.png') no-repeat;
+  width: 210px;
+  height: 196px;
+  margin: auto;
+  display: block;
+  text-indent: -9999px;
 }
 .btn_facebook {
   background: image-url('btn_sign_in_fb.png') no-repeat;
@@ -73,6 +85,18 @@ h3 {
   height: 52px;
   display:block;
   -webkit-background-style: none;
+  text-indent: -9999px;
+  margin: 40px auto;
+}
+.btn_facebook a:active {
+  top: -1px;
+}
+.looper-description {
+  margin-top: 100px;
+  font-size: 36px;
+  color: #918e8e;
+  text-align: center;
+  font-weight: 100;
 }
 /* End Home */
 
@@ -102,6 +126,9 @@ h3 {
 }
 .profile-menu {
   float:right;
+}
+.profile-pic:focus {
+  outline: none;
 }
 .dropdown-toggle {
   margin: 0 0 0 45px;
