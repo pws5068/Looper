@@ -48,12 +48,12 @@
 			</div>
       <div class="profile-menu" ng-controller="ProfileMenuController">
         <div class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="{{currentUser.thumb_url}}" alt="{{currentUser.name}}" /></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="{{currentUser.thumb_url}}" alt="{{currentUser.name}}" class="profile-pic" /></a>
 
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <li class="disabled"><a tabindex="-1" href="#">Change Swatch Color</a></li>
             <li class="disabled"><a tabindex="-1" href="#">Change Profile Pic</a></li>
-            <li><a tabindex="-1" href="#">↓ Chrome Extension</a></li>
+            <li><a tabindex="-1" href="#">Get Chrome Extension</a></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
