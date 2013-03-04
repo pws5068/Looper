@@ -2,6 +2,12 @@ function DashboardController($scope, $routeParams, $http) {
 	
 	$scope.groupId = $routeParams.groupId;
 	
+	$scope.$watch('shares', function(value1, value2){
+		setTimeout(function(){
+			$("a.pretty-date").prettyDate();		
+		}, 0);
+	});
+	
 	if ($scope.groupId != null) {
 		$http.get('/groups/' + $scope.groupId + '/shares').success(function(data) {
 			$scope.handleShares(data);
