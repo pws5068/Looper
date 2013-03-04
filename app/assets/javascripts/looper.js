@@ -344,10 +344,8 @@
             
             var groups = {friends:idUsers, network_friends:graphIdUsers};
             $.post('/groups.json', groups, function(inData){
-            	var groupId = inData.id;
-            	console.log('group id ' + groupId);
+				var data = {share:{url:url, group_id:inData.id}};	                        	
 	            $.post('/shares.json', data, function(inData2) {
-		            var data = {share:{url:url, group_id:groupId}};	            
 		            console.log(inData);
 		            /*$window.location.href = "#/shares"*/
 	            });            	            
