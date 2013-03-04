@@ -1,9 +1,10 @@
 class Share < ActiveRecord::Base
   has_many :tags
+  has_many :share_views
   belongs_to :group
 
   attr_accessible :url, :thumb, :title, :media_type, :description
-  attr_accessible :preview_html
+  attr_accessible :preview_html, :share_views
 
   validates :media_type, :inclusion => { :in => ['article', 'audio', 'video', 'photo'] }
 

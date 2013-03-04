@@ -5,6 +5,7 @@ Looper::Application.routes.draw do
   resources :shares
   resources :tags
   resources :contents
+  resources :share_views, :only => [ :create ]
 
   resources :groups do
     member do
@@ -20,7 +21,7 @@ Looper::Application.routes.draw do
 
   root :to => 'dashboard#index'
   get 'dashboard/index'
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
