@@ -35,7 +35,7 @@ function DashboardController($scope, $routeParams, $http) {
 	};
 	
 	$scope.hasUserSeen = function(user) {
-		return user.viewed;
+		return user.viewed ==1;
 	}
 	
 	$scope.imageClassForMediaType = function(mediaType) {
