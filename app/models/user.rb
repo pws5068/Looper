@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.username = auth.info.nickname
       user.email = auth.info.email
+      user.name = auth.info.name
       # @todo - why is this breaking in prod?
       #user.icon_url = "http://graph.facebook.com/#{auth.uid}/picture"
       user.thumb_url = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
