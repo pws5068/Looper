@@ -26,7 +26,6 @@ class Share < ActiveRecord::Base
 
   def soundcloudify
     track = get_audio_details()
-    debugger
     if track
       self.title = track.title
       self.description = track.description
