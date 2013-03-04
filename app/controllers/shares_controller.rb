@@ -3,7 +3,7 @@ class SharesController < ApplicationController
   # GET /shares
   # GET /shares.json
   def index
-    @shares = Share.all
+    @shares = current_user.accessible_shares
 
     respond_to do |format|
       format.html # index.html.erb
