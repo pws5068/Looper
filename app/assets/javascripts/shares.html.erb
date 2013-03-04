@@ -20,8 +20,8 @@
 					<h3><a href="{{share.url}}" target="_blank">{{share.title}}</a></h3>
 					<p class="share-description">{{share.description}}</p>
 					<div class="preview-html hide" ng-bind-html-unsafe="share.preview_html"></div>
-					<span ng-repeat="user in share.group.users">
-						<img class="user-img-read" src="{{user.thumb_url}}" alt="{{user.name}}" />
+					<span ng-repeat="user in share.viewers">
+						<img class="user-img" ng-class="{'user-img-read' : hasUserSeen(user)}" src="{{user.thumb_url}}" alt="{{user.name}}" />
 					</span>
 					<div>
 						<span ng-class="imageClassForMediaType(share.media_type)"></span>
