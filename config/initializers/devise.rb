@@ -207,9 +207,18 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   # @todo - make these environment variables
+
+  unless Rails.env.production?
+    facebook_app_id = '305171229609258'
+    facebook_app_secret = 'a51722ecbd084dd2c9cd4cd17f38c963'
+  else
+    facebook_app_id = '222718844534794'
+    facebook_app_secret = 'd167c1aec1d9748ebf4d5510eba28f4f'
+  end
+
   config.omniauth :facebook, 
-                  '222718844534794', 
-                  'd167c1aec1d9748ebf4d5510eba28f4f',
+                  facebook_app_id, 
+                  facebook_app_secret
                   { :scope => "email,read_friendlists" }
 
   # ==> Warden configuration

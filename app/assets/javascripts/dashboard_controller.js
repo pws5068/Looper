@@ -32,7 +32,7 @@ function DashboardController($scope, $routeParams, $http) {
 		When the user selects a share
 	*/
 	$scope.selectShare = function(share) {
-		// TODO: Expand the share
+		
 	};
 	
 	/*

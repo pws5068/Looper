@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :thumb_url
+  attr_accessible :name, :thumb_url, :icon_url
 
 
   def fb_friends
@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.username = auth.info.nickname
       user.email = auth.info.email
-      user.icon_url = "http://graph.facebook.com/#{auth.uid}/picture"
+      # @todo - why is this breaking in prod?
+      #user.icon_url = "http://graph.facebook.com/#{auth.uid}/picture"
       user.thumb_url = "http://graph.facebook.com/#{auth.uid}/picture?type=large"
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
