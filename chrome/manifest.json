@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "looper.io",
-    "description": "Loop it up",
+    "description": "Share content with all of your friends on looper.io",
     "version": "1.0",
 
     "permissions": [
