@@ -10,18 +10,15 @@ class Share < ActiveRecord::Base
 
   before_save :scrape_data
 
-  def youtubeify( identifier )
-    video = Share.get_youtube_video( identifier )
+  def youtubeify( )
+    video = get_video()
     if video
-      title = video.title
-      description = video.description
-      thumb = video.thumbnails.first().url
-      url = video.player_url
-      preview_html = 
-      "<iframe id='ytplayer' type='text/html' width='640' height='390'
-  src='http://www.youtube.com/embed/#{identifier}?autoplay=1'
-  frameborder='0'/>" # @todo - this should be calculated on the fly
-      media_type = 'video'
+      self.title = video.title
+      self.description = video.description
+      self.thumb = video.thumbnails.first().url
+      self.url = video.player_url
+      self.preview_html = video.embed_html5()
+      self.media_type = 'video'
     else
       false
     end
@@ -62,7 +59,16 @@ class Share < ActiveRecord::Base
   end
 
   def is_youtube?
-    !! Share.parse_youtube_url( url )
+     !! get_video()
+  end
+
+  def get_video
+    client = Share.yt_session()
+    begin
+      client.video_by( url ) 
+    rescue OpenURI::HTTPError
+      false
+    end
   end
 
   private
@@ -70,8 +76,7 @@ class Share < ActiveRecord::Base
   def scrape_data
     if is_youtube?
       media_type = 'video'
-      identifier = Share.parse_youtube_url( url )
-      youtubeify( identifier )
+      youtubeify( )
     end
   end
 
