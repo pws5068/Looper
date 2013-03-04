@@ -12,11 +12,15 @@ Group.getGroupById = function(groupId) {
 
 function GroupsController($scope, $window, $http) {
 	// To do load in groups
+	$scope.$watch('groups', function(value1, value2){
+		setTimeout(function(){
+			$("a.pretty-date").prettyDate();		
+		}, 0);
+	});
 	
 	$http.get('/groups').success(function(data) {
 		$scope.groups = data;
 		Group.groups = data;
-		console.log(data);
 	});
 	
 	$scope.isSelectedGroup = function(group) {
