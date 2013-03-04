@@ -2,6 +2,7 @@
 
     var Looper = function () {
         this.names = [];
+        this.tags = [];
         this.groups = [];
         this.groupUserNames = [];
     };
@@ -85,7 +86,13 @@
                         if (event.keyCode == 8) {
                             self.checkForDeletedName();
                         }
-                    })
+                    });
+
+                    $('#LOOPER_TAGS').keypress(function(event) {
+                        if (event.keyCode == 13) {
+                            self.submitLoop();
+                        }
+                    });
 
                     self.loadGroupsData();
                 }
@@ -275,6 +282,33 @@
                     $('#LOOPER_TAGS').focus();
                 }
             });
+        },
+
+        /*
+         * Submit the names and tags to the api
+         */
+
+        submitLoop: function() {
+            //location.href
+            var self = this;
+
+            $('#LOOPER_TAGS').animate({
+                paddingLeft: '100px',
+                opacity: 0
+            }, {
+                duration: 300,
+                easing: 'swing'
+            });
+
+            $('#LOOPER_COMPLETE').css('display', 'block').animate({
+                opacity: 1
+            }, {
+                duration: 300,
+            });
+
+            window.setTimeout(function() {
+                self.hideMainContainer();
+            }, 1500);
         },
 
         /*
