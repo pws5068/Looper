@@ -1,9 +1,11 @@
 class GroupsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /groups
   # GET /groups.json
   def index
-    #@groups = current_user.groups # @todo -- use this instead of all()
-    @groups = Group.all()
+    @groups = current_user.groups
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +52,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    users = []
+    users = [ current_user ]
     if params[:friends]
       users = User.find( params[:friends] )
     end
