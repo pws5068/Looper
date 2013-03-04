@@ -139,7 +139,7 @@
                 data.network_friends.forEach(function(friend, index) {
                     if (friend.name) {
                         groups.push({
-                            id: friend.id,
+                            graphId: friend.id,
                             name: friend.name
                         });
                         groupUserNames.push(friend.name);
@@ -290,7 +290,29 @@
 
         submitLoop: function() {
             //location.href
-            var self = this;
+            /*
+             * Match this.names to ids and graphIds from this.groups
+             */
+
+            var self = this,
+                idUsers = [],
+                graphIdUsers = [];
+
+            this.names.forEach(function(name, index) {
+                self.groups.forEach(function(group, index) {
+                    if (name == group.name) {
+                        if (group.id) {
+                            idUsers.push(group.id);
+                        } else if (group.graphId) {
+                            graphIdUsers.push(group.graphId);
+                        }
+                    }
+                });
+            });
+
+            /*
+             * Animate the change osut
+             */
 
             $('#LOOPER_TAGS').animate({
                 paddingLeft: '100px',
