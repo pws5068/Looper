@@ -288,7 +288,7 @@
             /*
              * Match this.names to ids and graphIds from this.groups
              */
-
+            var url = $("#LOOPER_URL").val();
             var self = this,
                 idUsers = [],
                 graphIdUsers = [];
