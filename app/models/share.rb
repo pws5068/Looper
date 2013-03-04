@@ -28,7 +28,7 @@ class Share < ActiveRecord::Base
   end
 
   def self.parse_youtube_url url
-    if url.nil?
+    if ! url.nil?
       false
     else
       regex = /^(?:http:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
@@ -42,19 +42,23 @@ class Share < ActiveRecord::Base
   end
 
   def viewers
-    viewers = []
-    users = group.users
-    for user in users
-      usr = user.attributes
-      usr[:viewed] = 0
-      for view in share_views
-        if user.id == view.user_id
-          usr[:viewed] = 1
+    if ! group.nil?
+      viewers = []
+      users = group.users
+      for user in users
+        usr = user.attributes
+        usr[:viewed] = 0
+        for view in share_views
+          if user.id == view.user_id
+            usr[:viewed] = 1
+          end
         end
+        viewers << usr
       end
-      viewers << usr
+      viewers
+    else
+      []
     end
-    viewers
   end
 
   def is_youtube?
