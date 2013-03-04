@@ -21,7 +21,7 @@
 					<p class="share-description">{{share.description}}</p>
 					<div class="preview-html hide" ng-bind-html-unsafe="share.preview_html"></div>
 					<span ng-repeat="user in share.viewers">
-						<img class="user-img-read" ng-class="{'user-img-unread' : hasUserSeen(user)}" src="{{user.thumb_url}}" alt="{{user.name}}" />
+						<img class="user-img-read" ng-class="{'user-img-unread' : hasNotUserSeen(user)}" src="{{user.thumb_url}}" alt="{{user.name}}" />
 					</span>
 					<div>
 						<span ng-class="imageClassForMediaType(share.media_type)"></span>
