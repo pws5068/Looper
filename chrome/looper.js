@@ -319,9 +319,9 @@
             });*/
 
             var groups = {friends:idUsers, network_friends:graphIdUsers};
-            $.post('/groups.json', groups, function(inData){
+            $.post('http://looper.io/groups.json', groups, function(inData){
                 var data = {share:{url:location.href, group_id:inData.id}};                               
-                $.post('/shares.json', data, function(inData2) {
+                $.post('http://looper.io/shares.json', data, function(inData2) {
                     //console.log(inData);
                     /*$window.location.href = "#/shares"*/
                 });                         
