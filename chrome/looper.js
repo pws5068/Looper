@@ -69,7 +69,7 @@
                      */
 
                     $('body').click(function(event) {
-                        if (event.clientY > 55) {
+                        if (event.clientY > (55 + $('.ui-autocomplete').height())) {
                             self.hideMainContainer();
                         }
                     });
