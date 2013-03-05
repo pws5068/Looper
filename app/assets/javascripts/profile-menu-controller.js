@@ -3,3 +3,5 @@ function ProfileMenuController($scope, $http) {
 		$scope.currentUser = data;
 	});
 }
+
+ProfileMenuController.$inject = ['$scope', '$http'];
