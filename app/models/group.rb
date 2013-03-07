@@ -7,7 +7,7 @@ class Group < ActiveRecord::Base
 
   # @todo - Mega Hackish
   def self.find_or_create( users )
-    user_ids = users.collect(&:id)
+      user_ids = users.collect(&:id)
 
     for group in users.first().groups
       g_users = group.users

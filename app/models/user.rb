@@ -29,7 +29,9 @@ class User < ActiveRecord::Base
       User.create({
         :uid => data['id'], 
         :name => data['name'], 
-        :provider => 'facebook'}, without_protection: true)
+        :thumb_url => "http://graph.facebook.com/#{data['id']}/picture",
+        :provider => 'facebook'
+        }, without_protection: true)
     end
   end
 
