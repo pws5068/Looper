@@ -10,45 +10,20 @@ class Share < ActiveRecord::Base
 
   before_save :scrape_data
 
-  def youtubeify
-    video = get_video_details()
-    if video
-      self.title = video.title
-      self.description = video.description
-      self.thumb = video.thumbnails.first().url
-      self.url = video.player_url
-      self.preview_html = video.embed_html5()
-      self.media_type = 'video'
-    else
-      false
-    end
-  end
+  def embedly
+    client = Embedly::API.new :key => 'e8d4e74f0400420fa8a38df5d50fe26a',
+        :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; paulsilvis@gmail.com)'
+    obj = client.oembed :url => url
+    json_obj = JSON.pretty_generate(obj[0].marshal_dump)
 
-  def soundcloudify
-    track = get_audio_details()
-    if track
-      self.title = track.title
-      self.description = track.description
-      self.url = track.permalink_url
-      self.thumb = track.artwork_url
-      track.preview_html = 
-        "<iframe width='100%' height='166' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F#{track.id}'></iframe>"
-    else
-      false
-    end
-  end
-
-  def self.parse_youtube_url url
-    if ! url.nil?
-      false
-    else
-      regex = /^(?:http:\/\/)?(?:www\.)?\w*\.\w*\/(?:watch\?v=)?((?:p\/)?[\w\-]+)/
-      out = url.match(regex)
-      if ! out.nil?
-        out[1]
-      else
-        false
-      end
+    if obj[0]
+      obj = obj[0]
+      self.title = obj.title
+      self.description = obj.description
+      self.preview_html = obj.html
+      self.url = obj.url
+      self.thumb = obj.thumbnail_url
+      self.media_type = obj.type
     end
   end
 
@@ -72,50 +47,9 @@ class Share < ActiveRecord::Base
     end
   end
 
-  def is_valid_youtube?
-     !! get_video_details() # probably shouldnt make these calls twice
-  end
-
-  def is_valid_audio?
-    !! get_audio_details()
-  end
-
-  def get_video_details
-    client = Share.yt_session()
-    begin
-      client.video_by( url ) 
-    rescue OpenURI::HTTPError
-      false
-    end
-  end
-
-  def get_audio_details
-    client = Share.sc_session()
-    track = client.get('/resolve', :url => url)
-  end
-
   private
 
   def scrape_data
-    if is_valid_youtube?
-      self.media_type = 'video'
-      youtubeify()
-    elsif is_valid_audio?
-      self.media_type = 'audio'
-      soundcloudify()
-    end
-  end
-
-  def self.yt_session
-    # @todo - pull the following credentials out into a config file
-    @yt_client ||= YouTubeIt::Client.new(
-      :username => 'looper.io.app@gmail.com' , 
-      :password => 'sincerely' , 
-      :dev_key => 'AI39si5eqTcj26_n9Jjb_WsRfpy-xw0dOdWxMgUSmHtH3TSLmT_D2hTDQyJ-DHLRjfpxWJ1K65ccZe2N5x8Poj0Up0saky-TaQ' )
-  end
-
-  # Soundcloud
-  def self.sc_session
-    client = Soundcloud.new(:client_id => '64ef72bdca117ec1660e6b29124b1fc6')
+    embedly()
   end
 end
