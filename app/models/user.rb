@@ -17,9 +17,7 @@ class User < ActiveRecord::Base
 
   def fb_friends
     graph = facebook()
-    if graph
-      graph.get_connection('me','friends')
-    end
+    facebook().get_connection('me','friends') if graph
   end
 
   def self.find_or_create_from_facebook( data )
@@ -40,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    User.all() # todo -- this function should return users that i'm in groups with
+    User.where("id != #{id}") # todo -- this function should return users that i'm in groups with
   end
 
   def self.from_omniauth(auth)
