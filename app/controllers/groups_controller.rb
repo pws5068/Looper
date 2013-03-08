@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
 
   before_filter :authenticate_user!
-  skip_before_filter :verify_authenticity_token
 
   # GET /groups
   # GET /groups.json
@@ -55,7 +54,7 @@ class GroupsController < ApplicationController
   def create
     users = [ current_user ]
     if params[:friends]
-      users = User.find( params[:friends] )
+      users = users + User.find( params[:friends] )
     end
 
     if params[:network_friends] && current_user.fb_connected?
