@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, :through => :group_users
   has_many :accessible_shares, :through => :groups, :source => :shares
-  has_many :contents, :through => :share_views
+  #has_many :shares, :through => :share_views
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
