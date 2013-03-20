@@ -5,39 +5,10 @@ class Group < ActiveRecord::Base
 
   attr_accessible :alias, :users
 
-  # @todo - Mega Hackish
-  def self.find_or_create( users )
-      user_ids = users.collect(&:id)
-
-    for group in users.first().groups
-      g_users = group.users
-
-      if g_users.count == user_ids.count
-        valid = true
-        for user in g_users
-          if !user_ids.include?(user.id)
-            valid = false
-          end
-        end
-        if valid
-          match = group
-          break
-        end
-      end
-    end
-
-    if !match
-      group = Group.create()
-      group.add_users users 
-    else
-      group = match
-    end
-    group
-  end
-
-  def add_users( users )
-    for user in users
-      GroupUser.create( :user_id => user.id, :group_id => id )
+  def self.find_or_create current_user, friends # Let rails take care of the validation if they are already in the group or not
+    current_user.groups.each do |group|
+      group.group_users.create(user_ids: friends.map(&:id))
     end
   end
+
 end

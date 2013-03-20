@@ -1,4 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  # this looks great but I meta programmed mine a little bit to make it easier for more methods
+  # https://github.com/MikeSilvis/shindig/blob/master/app/controllers/users/omniauth_callbacks_controller.rb
   def all
     user = User.from_omniauth( request.env['omniauth.auth'] )
     if user.persisted?

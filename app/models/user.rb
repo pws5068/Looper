@@ -16,21 +16,16 @@ class User < ActiveRecord::Base
   attr_accessible :name, :thumb_url, :icon_url, :uid
 
   def fb_friends
-    graph = facebook()
-    facebook().get_connection('me','friends') if graph
+    facebook.get_connection('me','friends') if facebook ## You are memoizing it so you dont need to set it to a var
   end
 
   def self.find_or_create_from_facebook( data )
-    user = User.where("uid='#{data['id']}'").first()
-
-    unless user
-      User.create({
-        :uid => data['id'], 
-        :name => data['name'], 
-        :thumb_url => "http://graph.facebook.com/#{data['id']}/picture",
-        :provider => 'facebook'
-        }, without_protection: true)
-    end
+    where(uid: data['id']).first_or_create(
+      :uid => data['id'],
+      :name => data['name'],
+      :thumb_url => "http://graph.facebook.com/#{data['id']}/picture",
+      :provider => 'facebook'
+    )
   end
 
   def fb_connected?
@@ -38,7 +33,8 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    User.where("id != #{id}") # todo -- this function should return users that i'm in groups with
+    #User.where("id != #{id}") # todo -- this function should return users that i'm in groups with
+    User.where("id != ?", self.id) # todo -- this function should return users that i'm in groups with
   end
 
   def self.from_omniauth(auth)
@@ -75,6 +71,10 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  # it appears you are constantly fighting devise to get rid of the required fields. Do you ever 
+  # let someone login not via facebook? If not at the top on line 11 you can comment out certain parts
+  # and it will give rid of these requirements. Otherwise this is a great way to override methods.
   def email_required?
     super && uid.blank?
   end

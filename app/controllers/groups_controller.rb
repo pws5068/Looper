@@ -51,35 +51,44 @@ class GroupsController < ApplicationController
 
   # POST /groups
   # POST /groups.json
+  #def create
+    #users = [ current_user ]
+    #if params[:friends] # why am i passing up friends? Don't i already know who their friends are? Or are they manually selecting them?
+      #users = users + User.find( params[:friends] )
+    #end
+
+    #if params[:network_friends] && current_user.fb_connected? # The whole app seems to really rely on facebook. I would remove a lot of condtional logic and just force everyone to FB connect as the app wont work at all otherwise in its present state
+      #fb_users = current_user.fb_friends()
+
+      #for friend in params[:network_friends]
+        #for fb_user in fb_users
+          #if fb_user['id'] == friend # huh?
+            #user =  User.find_or_create_from_facebook( fb_user )
+            #users << user if user
+          #end
+        #end
+      #end
+    #end
+
+    #if users.any?
+      #@group = Group.find_or_create( current_user, friends )
+    #end
+
+    #respond_to do |format| # these respond_to's are unneeded
+      #if @group
+        #format.json { render json: @group, status: :created, location: @group }
+      #else
+        #format.json { render json: false, status: :unprocessable_entity }
+      #end
+    #end
+  #end
+
   def create
-    users = [ current_user ]
-    if params[:friends]
-      users = users + User.find( params[:friends] )
-    end
-
     if params[:network_friends] && current_user.fb_connected?
-      fb_users = current_user.fb_friends()
-
-      for friend in params[:network_friends]
-        for fb_user in fb_users
-          if fb_user['id'] == friend
-            user =  User.find_or_create_from_facebook( fb_user )
-            users << user if user
-          end
-        end
+      friends = current_user.fb_friends.map do |friend|
+        User.find_or_create_from_facebook( fb_user )
       end
-    end
-
-    if users.any?
-      @group = Group.find_or_create( users )
-    end
-
-    respond_to do |format|
-      if @group
-        format.json { render json: @group, status: :created, location: @group }
-      else
-        format.json { render json: false, status: :unprocessable_entity }
-      end
+      Group.find_or_create(current_user, friends)
     end
   end
 
