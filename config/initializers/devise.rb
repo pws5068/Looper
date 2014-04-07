@@ -222,6 +222,7 @@ Devise.setup do |config|
                   facebook_app_secret
                   { :scope => "email,read_friendlists" }
 
+  config.secret_key = ENV['DEVISE_SECRET_KEY']
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

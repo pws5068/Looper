@@ -11,8 +11,9 @@ gem 'omniauth-facebook'
 gem 'koala'
 gem 'embedly'
 gem 'json'
-gem 'debugger'
+gem 'byebug'
 gem 'rails_admin'
+gem 'figaro'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,7 +22,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer','~> 0.11.4'
+  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
