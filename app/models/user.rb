@@ -11,9 +11,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :thumb_url, :icon_url, :uid
+  #attr_accessible :email, :password, :password_confirmation, :remember_me
+  #attr_accessible :name, :thumb_url, :icon_url, :uid
 
   def fb_friends
     graph = facebook()

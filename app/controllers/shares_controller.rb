@@ -60,4 +60,9 @@ class SharesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  def share_params
+    params.require(:share).permit(:url, :thumb, :title, :media_type, :description, :preview_html, :share_views, :group_id)
+  end
 end

@@ -23,7 +23,7 @@ Looper::Application.routes.draw do
   end
 
   authenticated :user do
-    root :to => "dashboard#index"
+    #root :to => "dashboard#index"
   end
 
   root :to => "home#index"

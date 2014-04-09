@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   has_many :group_users
   has_many :users, :through => :group_users
 
-  attr_accessible :alias, :users
+  #attr_accessible :alias, :users
 
   # @todo - Mega Hackish
   def self.find_or_create( users )

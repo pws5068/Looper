@@ -81,4 +81,9 @@ class TagsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def tag_params
+    params.require(:tag).permit(:content_id, :keyword)
+  end
 end
